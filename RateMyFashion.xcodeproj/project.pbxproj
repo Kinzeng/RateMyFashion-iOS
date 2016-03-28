@@ -15,6 +15,7 @@
 		E4B548251CA9D398004EA764 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4B548231CA9D398004EA764 /* LaunchScreen.storyboard */; };
 		E4B548301CA9D398004EA764 /* RateMyFashionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E4B5482F1CA9D398004EA764 /* RateMyFashionTests.m */; };
 		E4B5483B1CA9D398004EA764 /* RateMyFashionUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E4B5483A1CA9D398004EA764 /* RateMyFashionUITests.m */; };
+		E4B5484F1CA9D67F004EA764 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4B5484E1CA9D67F004EA764 /* Login.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		E4B548361CA9D398004EA764 /* RateMyFashionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RateMyFashionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B5483A1CA9D398004EA764 /* RateMyFashionUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RateMyFashionUITests.m; sourceTree = "<group>"; };
 		E4B5483C1CA9D398004EA764 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E4B5484E1CA9D67F004EA764 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,10 @@
 		E4B548141CA9D398004EA764 /* RateMyFashion */ = {
 			isa = PBXGroup;
 			children = (
+				E4B5484B1CA9D42D004EA764 /* API */,
+				E4B5484A1CA9D41C004EA764 /* Controllers */,
+				E4B548491CA9D414004EA764 /* Views */,
+				E4B548481CA9D3B6004EA764 /* Models */,
 				E4B548181CA9D398004EA764 /* AppDelegate.h */,
 				E4B548191CA9D398004EA764 /* AppDelegate.m */,
 				E4B5481B1CA9D398004EA764 /* ViewController.h */,
@@ -109,6 +115,7 @@
 				E4B548211CA9D398004EA764 /* Assets.xcassets */,
 				E4B548231CA9D398004EA764 /* LaunchScreen.storyboard */,
 				E4B548261CA9D398004EA764 /* Info.plist */,
+				E4B5484E1CA9D67F004EA764 /* Login.storyboard */,
 				E4B548151CA9D398004EA764 /* Supporting Files */,
 			);
 			path = RateMyFashion;
@@ -138,6 +145,34 @@
 				E4B5483C1CA9D398004EA764 /* Info.plist */,
 			);
 			path = RateMyFashionUITests;
+			sourceTree = "<group>";
+		};
+		E4B548481CA9D3B6004EA764 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		E4B548491CA9D414004EA764 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		E4B5484A1CA9D41C004EA764 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		E4B5484B1CA9D42D004EA764 /* API */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,6 +242,7 @@
 				TargetAttributes = {
 					E4B548111CA9D397004EA764 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 8VBS8XSEG3;
 					};
 					E4B5482A1CA9D398004EA764 = {
 						CreatedOnToolsVersion = 7.3;
@@ -243,6 +279,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4B5484F1CA9D67F004EA764 /* Login.storyboard in Resources */,
 				E4B548251CA9D398004EA764 /* LaunchScreen.storyboard in Resources */,
 				E4B548221CA9D398004EA764 /* Assets.xcassets in Resources */,
 				E4B548201CA9D398004EA764 /* Main.storyboard in Resources */,
@@ -415,6 +452,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = RateMyFashion/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MZ.RateMyFashion;
@@ -426,6 +464,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = RateMyFashion/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MZ.RateMyFashion;
