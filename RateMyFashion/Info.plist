@@ -7,12 +7,12 @@
         <dict>
             <key>CFBundleURLSchemes</key>
             <array>
-                <string>fb1789750737926401</string>
+                <string>fb1573958516265820</string>
             </array>
         </dict>
     </array>
     <key>FacebookAppID</key>
-    <string>1789750737926401</string>
+    <string>1573958516265820</string>
     <key>FacebookDisplayName</key>
     <string>RateMyFashion</string>
     <key>LSApplicationQueriesSchemes</key>

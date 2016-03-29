@@ -7,15 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E4609E081CAB0F6500A2FE3C /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4609E051CAB0F6500A2FE3C /* FBSDKCoreKit.framework */; };
+		E4609E091CAB0F6500A2FE3C /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4609E061CAB0F6500A2FE3C /* FBSDKLoginKit.framework */; };
+		E4609E0A1CAB0F6500A2FE3C /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4609E071CAB0F6500A2FE3C /* FBSDKShareKit.framework */; };
 		E4B548171CA9D398004EA764 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E4B548161CA9D398004EA764 /* main.m */; };
 		E4B5481A1CA9D398004EA764 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E4B548191CA9D398004EA764 /* AppDelegate.m */; };
-		E4B5481D1CA9D398004EA764 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4B5481C1CA9D398004EA764 /* ViewController.m */; };
+		E4B5481D1CA9D398004EA764 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4B5481C1CA9D398004EA764 /* LoginController.m */; };
 		E4B548201CA9D398004EA764 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4B5481E1CA9D398004EA764 /* Main.storyboard */; };
 		E4B548221CA9D398004EA764 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4B548211CA9D398004EA764 /* Assets.xcassets */; };
-		E4B548251CA9D398004EA764 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4B548231CA9D398004EA764 /* LaunchScreen.storyboard */; };
 		E4B548301CA9D398004EA764 /* RateMyFashionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E4B5482F1CA9D398004EA764 /* RateMyFashionTests.m */; };
 		E4B5483B1CA9D398004EA764 /* RateMyFashionUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E4B5483A1CA9D398004EA764 /* RateMyFashionUITests.m */; };
-		E4B5484F1CA9D67F004EA764 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4B5484E1CA9D67F004EA764 /* Login.storyboard */; };
+		E4B54A111CAA2686004EA764 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4B54A101CAA2686004EA764 /* LaunchScreen.storyboard */; };
+		E4B54A171CAA2A8F004EA764 /* MZUser.m in Sources */ = {isa = PBXBuildFile; fileRef = E4B54A161CAA2A8F004EA764 /* MZUser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,15 +39,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E4609E051CAB0F6500A2FE3C /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../Documents/Facebook SDK/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
+		E4609E061CAB0F6500A2FE3C /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "../../Documents/Facebook SDK/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
+		E4609E071CAB0F6500A2FE3C /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = "../../Documents/Facebook SDK/FBSDKShareKit.framework"; sourceTree = "<group>"; };
 		E4B548121CA9D397004EA764 /* RateMyFashion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RateMyFashion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B548161CA9D398004EA764 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E4B548181CA9D398004EA764 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E4B548191CA9D398004EA764 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		E4B5481B1CA9D398004EA764 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		E4B5481C1CA9D398004EA764 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		E4B5481B1CA9D398004EA764 /* LoginController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
+		E4B5481C1CA9D398004EA764 /* LoginController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
 		E4B5481F1CA9D398004EA764 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E4B548211CA9D398004EA764 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E4B548241CA9D398004EA764 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E4B548261CA9D398004EA764 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4B5482B1CA9D398004EA764 /* RateMyFashionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RateMyFashionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B5482F1CA9D398004EA764 /* RateMyFashionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RateMyFashionTests.m; sourceTree = "<group>"; };
@@ -52,7 +57,9 @@
 		E4B548361CA9D398004EA764 /* RateMyFashionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RateMyFashionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B5483A1CA9D398004EA764 /* RateMyFashionUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RateMyFashionUITests.m; sourceTree = "<group>"; };
 		E4B5483C1CA9D398004EA764 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E4B5484E1CA9D67F004EA764 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		E4B54A101CAA2686004EA764 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E4B54A151CAA2A8F004EA764 /* MZUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZUser.h; sourceTree = "<group>"; };
+		E4B54A161CAA2A8F004EA764 /* MZUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZUser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +67,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4609E091CAB0F6500A2FE3C /* FBSDKLoginKit.framework in Frameworks */,
+				E4609E081CAB0F6500A2FE3C /* FBSDKCoreKit.framework in Frameworks */,
+				E4609E0A1CAB0F6500A2FE3C /* FBSDKShareKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,9 +90,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E4609E0B1CAB0F6A00A2FE3C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E4609E051CAB0F6500A2FE3C /* FBSDKCoreKit.framework */,
+				E4609E061CAB0F6500A2FE3C /* FBSDKLoginKit.framework */,
+				E4609E071CAB0F6500A2FE3C /* FBSDKShareKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E4B548091CA9D397004EA764 = {
 			isa = PBXGroup;
 			children = (
+				E4609E0B1CAB0F6A00A2FE3C /* Frameworks */,
 				E4B548141CA9D398004EA764 /* RateMyFashion */,
 				E4B5482E1CA9D398004EA764 /* RateMyFashionTests */,
 				E4B548391CA9D398004EA764 /* RateMyFashionUITests */,
@@ -109,14 +130,11 @@
 				E4B548481CA9D3B6004EA764 /* Models */,
 				E4B548181CA9D398004EA764 /* AppDelegate.h */,
 				E4B548191CA9D398004EA764 /* AppDelegate.m */,
-				E4B5481B1CA9D398004EA764 /* ViewController.h */,
-				E4B5481C1CA9D398004EA764 /* ViewController.m */,
 				E4B5481E1CA9D398004EA764 /* Main.storyboard */,
 				E4B548211CA9D398004EA764 /* Assets.xcassets */,
-				E4B548231CA9D398004EA764 /* LaunchScreen.storyboard */,
 				E4B548261CA9D398004EA764 /* Info.plist */,
-				E4B5484E1CA9D67F004EA764 /* Login.storyboard */,
 				E4B548151CA9D398004EA764 /* Supporting Files */,
+				E4B54A101CAA2686004EA764 /* LaunchScreen.storyboard */,
 			);
 			path = RateMyFashion;
 			sourceTree = "<group>";
@@ -150,6 +168,8 @@
 		E4B548481CA9D3B6004EA764 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E4B54A151CAA2A8F004EA764 /* MZUser.h */,
+				E4B54A161CAA2A8F004EA764 /* MZUser.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -164,6 +184,8 @@
 		E4B5484A1CA9D41C004EA764 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E4B5481B1CA9D398004EA764 /* LoginController.h */,
+				E4B5481C1CA9D398004EA764 /* LoginController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -238,7 +260,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0730;
-				ORGANIZATIONNAME = MouZeng;
+				ORGANIZATIONNAME = MouZhang;
 				TargetAttributes = {
 					E4B548111CA9D397004EA764 = {
 						CreatedOnToolsVersion = 7.3;
@@ -279,8 +301,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4B5484F1CA9D67F004EA764 /* Login.storyboard in Resources */,
-				E4B548251CA9D398004EA764 /* LaunchScreen.storyboard in Resources */,
+				E4B54A111CAA2686004EA764 /* LaunchScreen.storyboard in Resources */,
 				E4B548221CA9D398004EA764 /* Assets.xcassets in Resources */,
 				E4B548201CA9D398004EA764 /* Main.storyboard in Resources */,
 			);
@@ -307,7 +328,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4B5481D1CA9D398004EA764 /* ViewController.m in Sources */,
+				E4B5481D1CA9D398004EA764 /* LoginController.m in Sources */,
+				E4B54A171CAA2A8F004EA764 /* MZUser.m in Sources */,
 				E4B5481A1CA9D398004EA764 /* AppDelegate.m in Sources */,
 				E4B548171CA9D398004EA764 /* main.m in Sources */,
 			);
@@ -351,14 +373,6 @@
 				E4B5481F1CA9D398004EA764 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		E4B548231CA9D398004EA764 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E4B548241CA9D398004EA764 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -453,8 +467,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = /Users/kaimou/Documents/FacebookSDK;
 				INFOPLIST_FILE = RateMyFashion/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				New_Setting = "";
 				PRODUCT_BUNDLE_IDENTIFIER = MZ.RateMyFashion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -465,8 +481,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = /Users/kaimou/Documents/FacebookSDK;
 				INFOPLIST_FILE = RateMyFashion/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				New_Setting = "";
 				PRODUCT_BUNDLE_IDENTIFIER = MZ.RateMyFashion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -537,6 +555,7 @@
 				E4B548411CA9D398004EA764 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E4B548421CA9D398004EA764 /* Build configuration list for PBXNativeTarget "RateMyFashionTests" */ = {
 			isa = XCConfigurationList;
@@ -545,6 +564,7 @@
 				E4B548441CA9D398004EA764 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E4B548451CA9D398004EA764 /* Build configuration list for PBXNativeTarget "RateMyFashionUITests" */ = {
 			isa = XCConfigurationList;
@@ -553,6 +573,7 @@
 				E4B548471CA9D398004EA764 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
