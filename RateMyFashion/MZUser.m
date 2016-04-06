@@ -8,16 +8,34 @@
 
 #import "MZUser.h"
 
+static MZUser *currentUser;
+
 @implementation MZUser
 
-@synthesize userId = _userId;
-@synthesize firstName = _firstName;
-@synthesize lastName = _lastName;
 
--(id) initWithFirstName:(NSString * )firstName{
+-(id) initWithJSON:(NSDictionary * )returnedJSON andAccessToken:(NSString *) accessToken{
     if((self = [super init])){
-        self.firstName = firstName;
+        self.userId = accessToken;
+        self.firstName = [returnedJSON objectForKey:@"first_name"];
+        self.lastName = [returnedJSON objectForKey:@"last_name"];
     }
     return self;
+    
 }
+
++(void) setCurrentUser:(MZUser *)user{
+    currentUser = user;
+}
++(MZUser *) getCurrentUser{
+    return currentUser;
+}
+-(NSString *) getUserToken{
+    return _userId;
+}
+-(NSString *) description{
+    return [NSString stringWithFormat:@"User: FirstName=%@, LastName=%@", _firstName, _lastName];
+}
+
 @end
+
+

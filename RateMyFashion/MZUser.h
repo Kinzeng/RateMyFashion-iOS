@@ -14,4 +14,10 @@
 @property (strong) NSString * firstName;
 @property (strong) NSString * lastName;
 
+-(id) initWithJSON:(NSDictionary * )returnedJSON andAccessToken:(NSString *) accessToken;
+-(NSString *) getUserToken;
+
++(void) setCurrentUser: (MZUser *) currentUser;
+
++(MZUser *) getCurrentUser;
 @end

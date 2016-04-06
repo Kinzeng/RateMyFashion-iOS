@@ -7,6 +7,7 @@
 //
 
 #import "LoginController.h"
+#import "MZUser.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 @interface LoginController ()
@@ -17,9 +18,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
-    loginButton.center = self.view.center;
     [self.view addSubview:loginButton];
+    loginButton.center = self.view.center;
+    [loginButton addTarget:self action:@selector(fetchUserInfo) forControlEvents:UIControlEventTouchUpInside];
+    
+    
     //[self fetchUserInfo];
     
     // Do any additional setup after loading the view, typically from a nib.
@@ -31,28 +36,35 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)buttonPressed:(id)sender {
-    [self fetchUserInfo];
+    [self showUserInfo];
 }
-
+-(void) showUserInfo{
+    NSLog(@"User %@", [[MZUser getCurrentUser]description]);
+    NSLog(@"User Token %@", [[MZUser getCurrentUser]getUserToken]);
+    
+}
 -(void)fetchUserInfo
 {
-    if ([FBSDKAccessToken currentAccessToken])
-    {
-        NSLog(@"Token is available : %@",[[FBSDKAccessToken currentAccessToken]tokenString]);
-        
-        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields": @"id, name, link, first_name, last_name, picture.type(large), email, birthday, bio ,location ,friends ,hometown , friendlists"}]
+    if([FBSDKAccessToken currentAccessToken]){
+
+        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields": @"id, name, link, first_name, last_name, email"}]
          startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
              if (!error)
              {
-                 NSLog(@"resultis:%@",result);
+                 if([result isKindOfClass:[NSDictionary class]]){
+                     NSDictionary *jsonDict = (NSDictionary * )result;
+                     MZUser * user = [[MZUser alloc] initWithJSON:jsonDict andAccessToken:[[FBSDKAccessToken currentAccessToken] tokenString]];
+                     [MZUser setCurrentUser:user];
+                     
+                     
+                 }
              }
-             else
-             {
-                 NSLog(@"Error %@",error);
+             else{
+                 NSLog(@"There was an error %@", error);
              }
-         }];
-        
+            }];
     }
+    
     
 }
 
