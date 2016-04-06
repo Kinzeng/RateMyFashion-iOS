@@ -50,16 +50,18 @@
         didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
         error:(NSError *)error {
     if ([FBSDKAccessToken currentAccessToken]) {
-        // NSLog(@"Logged in");
-        // TestViewController *controller = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"test"];
-        // controller.text = @"Hello World!";
-        // [self presentViewController:controller animated:YES completion:nil];
+        NSLog(@"Logged in");
+        TestViewController *controller = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"test"];
+        controller.text = @"Hello World!";
+        [self presentViewController:controller animated:YES completion:nil];
 
         [self fetchUserInfo];
     }
 }
 
-- (void)loginButtonDidLogOut:(FBSDKLoginButton *)loginButton {
+- (void)loginButtonDidLogOut:(FBSDKLoginButton *)loginButton{
+    [MZUser setCurrentUser:nil];
+    
     NSLog(@"Logged out");
 }
 
