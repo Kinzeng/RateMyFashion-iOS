@@ -8,7 +8,8 @@
 
 #ifndef Constants_h
 #define Constants_h
-#define base_url = @"http://localhost:3000/api/load_own?user_id=kai1234"
+NSString * base_url = @"http://localhost:3000";
+//define other endpoints here. 
 
 
 #endif /* Constants_h */

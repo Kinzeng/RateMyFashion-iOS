@@ -24,6 +24,7 @@
 		E4B5483B1CA9D398004EA764 /* RateMyFashionUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E4B5483A1CA9D398004EA764 /* RateMyFashionUITests.m */; };
 		E4B54A111CAA2686004EA764 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4B54A101CAA2686004EA764 /* LaunchScreen.storyboard */; };
 		E4B54A171CAA2A8F004EA764 /* MZUser.m in Sources */ = {isa = PBXBuildFile; fileRef = E4B54A161CAA2A8F004EA764 /* MZUser.m */; };
+		E4D591871CB6CCCA00649F80 /* MZApi.m in Sources */ = {isa = PBXBuildFile; fileRef = E4D591861CB6CCCA00649F80 /* MZApi.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -855,6 +856,8 @@
 		E4B54A101CAA2686004EA764 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E4B54A151CAA2A8F004EA764 /* MZUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZUser.h; sourceTree = "<group>"; };
 		E4B54A161CAA2A8F004EA764 /* MZUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZUser.m; sourceTree = "<group>"; };
+		E4D591851CB6CCCA00649F80 /* MZApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZApi.h; sourceTree = "<group>"; };
+		E4D591861CB6CCCA00649F80 /* MZApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZApi.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2596,6 +2599,8 @@
 		E4B5484B1CA9D42D004EA764 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				E4D591851CB6CCCA00649F80 /* MZApi.h */,
+				E4D591861CB6CCCA00649F80 /* MZApi.m */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -2610,6 +2615,7 @@
 				E4B5480E1CA9D397004EA764 /* Sources */,
 				E4B5480F1CA9D397004EA764 /* Frameworks */,
 				E4B548101CA9D397004EA764 /* Resources */,
+				E4D5919F1CB6D50000649F80 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -2936,6 +2942,23 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		E4D5919F1CB6D50000649F80 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+				"",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E4B5480E1CA9D397004EA764 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -2946,6 +2969,7 @@
 				E4B54A171CAA2A8F004EA764 /* MZUser.m in Sources */,
 				E4B5481A1CA9D398004EA764 /* AppDelegate.m in Sources */,
 				E4B548171CA9D398004EA764 /* main.m in Sources */,
+				E4D591871CB6CCCA00649F80 /* MZApi.m in Sources */,
 				1F336E781CB4638900F957AC /* TestViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

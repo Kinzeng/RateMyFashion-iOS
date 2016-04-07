@@ -9,7 +9,8 @@
 #import "TestViewController.h"
 #import "LoginViewController.h"
 #import "MZUser.h"
-#import "AFNetworking.h"
+#import "MZPhoto.h"
+#import "MZApi.h"
 #import "Constants.h"
 @interface LoginViewController ()
 
@@ -33,7 +34,6 @@
     self.loginButton.center = self.view.center;
     self.loginButton.delegate = self;
     [self.view addSubview: self.loginButton];
-    //[self fetchUserInfo];
     
     // Do any additional setup after loading the view, typically from a nib.
 }
@@ -70,21 +70,15 @@
 -(void) showUserInfo {
     NSLog(@"User %@", [[MZUser getCurrentUser] description]);
     NSLog(@"User Token %@", [[MZUser getCurrentUser] getUserToken]);
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     
-    NSURL *URL = [NSURL URLWithString:@"http://localhost:3000/api/load_own?user_id=kai1234"];
-    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-    
-    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-        if (error) {
-            NSLog(@"Error: %@", error);
-        } else {
-            NSLog(@"%@ %@", response, responseObject);
+    [MZApi loadOwnPhotosWithCompletionHandler:^(NSMutableArray *results) {
+        if(results != nil){
+            NSLog(@"Not null!");
         }
     }];
-    [dataTask resume];
     
+    
+        
 }
 
 
