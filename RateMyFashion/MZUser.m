@@ -20,11 +20,13 @@ static MZUser *currentUser;
         self.lastName = [returnedJSON objectForKey:@"last_name"];
     }
     return self;
-    
 }
 
 +(void) setCurrentUser:(MZUser *)user{
     currentUser = user;
+}
++(void) clearCurrentUser{
+    currentUser = nil;
 }
 +(MZUser *) getCurrentUser{
     return currentUser;

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JSONModel.h"
 
 @interface MZUser : NSObject
 
@@ -18,6 +19,6 @@
 -(NSString *) getUserToken;
 
 +(void) setCurrentUser: (MZUser *) currentUser;
-
++(void) clearCurrentUser;
 +(MZUser *) getCurrentUser;
 @end
