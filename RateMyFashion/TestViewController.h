@@ -6,11 +6,11 @@
 //  Copyright © 2016 MouZhang. All rights reserved.
 //
 
+#import "MZUser.h"
 #import <UIKit/UIKit.h>
 
 @interface TestViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UILabel *label;
-@property () NSString *text;
+@property (strong, nonatomic) MZUser *user;
 
 @end

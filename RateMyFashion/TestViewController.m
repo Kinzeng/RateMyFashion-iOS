@@ -7,6 +7,7 @@
 //
 
 #import "TestViewController.h"
+#import "MZUser.h"
 
 @interface TestViewController ()
 
@@ -19,15 +20,14 @@
     // Do any additional setup after loading the view.
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    self.label.text = self.text;
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)getUserInfo:(id)sender {
+    NSLog([self.user.currentUser description]);
+}
 
 
 @end

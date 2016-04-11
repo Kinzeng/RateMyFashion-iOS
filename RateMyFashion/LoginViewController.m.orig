@@ -8,10 +8,14 @@
 
 #import "TestViewController.h"
 #import "LoginViewController.h"
+<<<<<<< HEAD
 #import "MZUser.h"
 #import "MZPhoto.h"
 #import "MZApi.h"
 #import "Constants.h"
+=======
+
+>>>>>>> Customized some of the swipe view
 @interface LoginViewController ()
 
 @end
@@ -25,7 +29,7 @@
     //check if the user is already logged in
     if ([FBSDKAccessToken currentAccessToken]) {
         TestViewController *controller = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"test"];
-        controller.text = @"Hello World!";
+        controller.user = self.user;
         [self presentViewController:controller animated:YES completion:nil];
     }
     */
@@ -52,28 +56,41 @@
         didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
         error:(NSError *)error {
     if ([FBSDKAccessToken currentAccessToken]) {
+        [self fetchUserInfoWithCompletionHandler:^() {
+            TestViewController *controller = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"test"];
+            controller.user = self.user;
+            [self presentViewController:controller animated:YES completion:nil];
+        }];
         NSLog(@"Logged in");
-        TestViewController *controller = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"test"];
-        controller.text = @"Hello World!";
-        [self presentViewController:controller animated:YES completion:nil];
-
-        [self fetchUserInfo];
     }
 }
 
 - (void)loginButtonDidLogOut:(FBSDKLoginButton *)loginButton{
-    [MZUser setCurrentUser:nil];
-    
+    self.user.currentUser = nil;
     NSLog(@"Logged out");
 }
 
 -(void) showUserInfo {
+<<<<<<< HEAD
     NSLog(@"User %@", [[MZUser getCurrentUser] description]);
     NSLog(@"User Token %@", [[MZUser getCurrentUser] getUserToken]);
+    
+    [MZApi loadOwnPhotosWithCompletionHandler:^(NSMutableArray *results) {
+        if(results != nil){
+            NSLog(@"Not null!");
+        }
+    }];
+    
+    
+        
+=======
+    NSLog(@"User %@", [_user description]);
+    NSLog(@"User Token %@", [_user userId]);
+>>>>>>> Customized some of the swipe view
 }
 
 
--(void)fetchUserInfo {
+-(void)fetchUserInfoWithCompletionHandler:(void (^)(void))segue {
     if([FBSDKAccessToken currentAccessToken]){
 
         [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" 
@@ -81,14 +98,15 @@
                                     startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
                                         if (!error) {
                                             if([result isKindOfClass:[NSDictionary class]]) {
-                                                NSDictionary *jsonDict = (NSDictionary * )result;
-                                                MZUser * user = [[MZUser alloc] initWithJSON:jsonDict andAccessToken:[[FBSDKAccessToken currentAccessToken] tokenString]];
-                                                [MZUser setCurrentUser:user];
+                                                NSDictionary *jsonDict = (NSDictionary *)result;
+                                                self.user = [[MZUser alloc] initWithJSON:jsonDict andAccessToken:[[FBSDKAccessToken currentAccessToken] tokenString]];
+                                                self.user.currentUser = self.user;
+                                                segue();
                                             }
                                         }
-                                        else {
+                                        else
                                             NSLog(@"There was an error %@", error);
-                                        }
+                                        
         }];
     }
 }

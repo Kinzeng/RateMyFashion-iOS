@@ -8,21 +8,20 @@
 
 #import "MZUser.h"
 
-static MZUser *currentUser;
-
 @implementation MZUser
 
 
--(id) initWithJSON:(NSDictionary * )returnedJSON andAccessToken:(NSString *) accessToken{
+- (id)initWithJSON:(NSDictionary *)returnedJSON
+      andAccessToken:(NSString *)accessToken {
     if((self = [super init])){
         self.userId = accessToken;
         self.firstName = [returnedJSON objectForKey:@"first_name"];
         self.lastName = [returnedJSON objectForKey:@"last_name"];
     }
     return self;
-    
 }
 
+<<<<<<< HEAD
 +(void) setCurrentUser:(MZUser *)user{
     currentUser = user;
 }
@@ -37,6 +36,10 @@ static MZUser *currentUser;
 }
 -(NSString *) description{
     return [NSString stringWithFormat:@"User: FirstName=%@, LastName=%@", _firstName, _lastName];
+=======
+- (NSString *)description {
+    return [NSString stringWithFormat:@"User: FirstName=%@, LastName=%@", self.firstName, self.lastName];
+>>>>>>> Customized some of the swipe view
 }
 
 @end
