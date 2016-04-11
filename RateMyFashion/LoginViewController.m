@@ -8,7 +8,7 @@
 
 #import "TestViewController.h"
 #import "LoginViewController.h"
-#import "MZUser.h"
+
 @interface LoginViewController ()
 
 @end
@@ -22,7 +22,7 @@
     //check if the user is already logged in
     if ([FBSDKAccessToken currentAccessToken]) {
         TestViewController *controller = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"test"];
-        controller.text = @"Hello World!";
+        controller.user = self.user;
         [self presentViewController:controller animated:YES completion:nil];
     }
     */
@@ -31,7 +31,6 @@
     self.loginButton.center = self.view.center;
     self.loginButton.delegate = self;
     [self.view addSubview: self.loginButton];
-    //[self fetchUserInfo];
     
     // Do any additional setup after loading the view, typically from a nib.
 }
@@ -50,12 +49,12 @@
         didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
         error:(NSError *)error {
     if ([FBSDKAccessToken currentAccessToken]) {
-        // NSLog(@"Logged in");
-        // TestViewController *controller = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"test"];
-        // controller.text = @"Hello World!";
-        // [self presentViewController:controller animated:YES completion:nil];
-
-        [self fetchUserInfo];
+        [self fetchUserInfoWithCompletionHandler:^() {
+            TestViewController *controller = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"test"];
+            controller.user = self.user;
+            [self presentViewController:controller animated:YES completion:nil];
+        }];
+        NSLog(@"Logged in");
     }
 }
 
@@ -64,12 +63,12 @@
 }
 
 -(void) showUserInfo {
-    NSLog(@"User %@", [[MZUser getCurrentUser] description]);
-    NSLog(@"User Token %@", [[MZUser getCurrentUser] getUserToken]);
+    NSLog(@"User %@", [_user description]);
+    NSLog(@"User Token %@", [_user userId]);
 }
 
 
--(void)fetchUserInfo {
+-(void)fetchUserInfoWithCompletionHandler:(void (^)(void))segue {
     if([FBSDKAccessToken currentAccessToken]){
 
         [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" 
@@ -77,14 +76,14 @@
                                     startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
                                         if (!error) {
                                             if([result isKindOfClass:[NSDictionary class]]) {
-                                                NSDictionary *jsonDict = (NSDictionary * )result;
-                                                MZUser * user = [[MZUser alloc] initWithJSON:jsonDict andAccessToken:[[FBSDKAccessToken currentAccessToken] tokenString]];
-                                                [MZUser setCurrentUser:user];
+                                                NSDictionary *jsonDict = (NSDictionary *)result;
+                                                self.user = [[MZUser alloc] initWithJSON:jsonDict andAccessToken:[[FBSDKAccessToken currentAccessToken] tokenString]];
+                                                segue();
                                             }
                                         }
-                                        else {
+                                        else
                                             NSLog(@"There was an error %@", error);
-                                        }
+                                        
         }];
     }
 }

@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "MZUser.h"
 
 @interface LoginViewController : UIViewController <FBSDKLoginButtonDelegate>
 
-@property (nonatomic) FBSDKLoginButton *loginButton;
+@property (strong, nonatomic) FBSDKLoginButton *loginButton;
+@property (strong, nonatomic) MZUser *user;
 
 @end
 
