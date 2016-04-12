@@ -20,4 +20,5 @@
 + (void)setCurrentUser: (MZUser *) currentUser;
 + (void)clearCurrentUser;
 + (MZUser *)getCurrentUser;
+
 @end

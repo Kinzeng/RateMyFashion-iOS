@@ -1,0 +1,25 @@
+//
+//  SwipeViewController.h
+//  RateMyFashion
+//
+//  Created by Kevin on 4/7/16.
+//  Copyright © 2016 MouZhang. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+<<<<<<< HEAD
+#import "DraggableViewBackground.h"
+#import "MZUser.h"
+
+@interface SwipeViewController : UIViewController <DraggableViewBackgroundDelegate>
+
+- (void)menuPressed;
+
+@property (strong, nonatomic)MZUser *user;
+=======
+#import "DraggableView.h"
+
+@interface SwipeViewController : UIViewController
+>>>>>>> 83648cbe58e0f3854d185654946ca88d0dbad8fa
+
+@end

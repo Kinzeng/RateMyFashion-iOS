@@ -62,6 +62,36 @@
 		1F336E761CB4638900F957AC /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		1F336E771CB4638900F957AC /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		1F336E791CB4645A00F957AC /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../../FacebookSDK/Bolts.framework; sourceTree = "<group>"; };
+		1F81709A1CB706D2008A1563 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		1F8170BA1CB71221008A1563 /* DraggableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DraggableView.h; path = Frameworks/TinderSwipe/DraggableView.h; sourceTree = "<group>"; };
+		1F8170BB1CB71221008A1563 /* DraggableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DraggableView.m; path = Frameworks/TinderSwipe/DraggableView.m; sourceTree = "<group>"; };
+		1F8170BC1CB71221008A1563 /* DraggableViewBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DraggableViewBackground.h; path = Frameworks/TinderSwipe/DraggableViewBackground.h; sourceTree = "<group>"; };
+		1F8170BD1CB71221008A1563 /* DraggableViewBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DraggableViewBackground.m; path = Frameworks/TinderSwipe/DraggableViewBackground.m; sourceTree = "<group>"; };
+		1F8170BE1CB71221008A1563 /* OverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OverlayView.h; path = Frameworks/TinderSwipe/OverlayView.h; sourceTree = "<group>"; };
+		1F8170BF1CB71221008A1563 /* OverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OverlayView.m; path = Frameworks/TinderSwipe/OverlayView.m; sourceTree = "<group>"; };
+		1F8170C31CB71287008A1563 /* SwipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeViewController.h; sourceTree = "<group>"; };
+		1F8170C41CB71287008A1563 /* SwipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeViewController.m; sourceTree = "<group>"; };
+		1F8170FF1CBD6088008A1563 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F8171011CBD6088008A1563 /* JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModel.h; sourceTree = "<group>"; };
+		1F8171021CBD6088008A1563 /* JSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModel.m; sourceTree = "<group>"; };
+		1F8171031CBD6088008A1563 /* JSONModelClassProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelClassProperty.h; sourceTree = "<group>"; };
+		1F8171041CBD6088008A1563 /* JSONModelClassProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelClassProperty.m; sourceTree = "<group>"; };
+		1F8171051CBD6088008A1563 /* JSONModelError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelError.h; sourceTree = "<group>"; };
+		1F8171061CBD6088008A1563 /* JSONModelError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelError.m; sourceTree = "<group>"; };
+		1F8171071CBD6088008A1563 /* JSONModelLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelLib.h; sourceTree = "<group>"; };
+		1F8171091CBD6088008A1563 /* JSONAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONAPI.h; sourceTree = "<group>"; };
+		1F81710A1CBD6088008A1563 /* JSONAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONAPI.m; sourceTree = "<group>"; };
+		1F81710B1CBD6088008A1563 /* JSONHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONHTTPClient.h; sourceTree = "<group>"; };
+		1F81710C1CBD6088008A1563 /* JSONHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONHTTPClient.m; sourceTree = "<group>"; };
+		1F81710D1CBD6088008A1563 /* JSONModel+networking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JSONModel+networking.h"; sourceTree = "<group>"; };
+		1F81710E1CBD6088008A1563 /* JSONModel+networking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JSONModel+networking.m"; sourceTree = "<group>"; };
+		1F8171101CBD6088008A1563 /* JSONKeyMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKeyMapper.h; sourceTree = "<group>"; };
+		1F8171111CBD6088008A1563 /* JSONKeyMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKeyMapper.m; sourceTree = "<group>"; };
+		1F8171121CBD6088008A1563 /* JSONValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONValueTransformer.h; sourceTree = "<group>"; };
+		1F8171131CBD6088008A1563 /* JSONValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONValueTransformer.m; sourceTree = "<group>"; };
+		E40811A41CB5F6F30052441D /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		E40A7B471CB4D59000D54F93 /* MZPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZPhoto.h; sourceTree = "<group>"; };
+		E40A7B481CB4D59000D54F93 /* MZPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZPhoto.m; sourceTree = "<group>"; };
 		E4B548121CA9D397004EA764 /* RateMyFashion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RateMyFashion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B548161CA9D398004EA764 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E4B548181CA9D398004EA764 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -87,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F81709B1CB706D2008A1563 /* CoreData.framework in Frameworks */,
 				1F336E741CB45F3F00F957AC /* FBSDKLoginKit.framework in Frameworks */,
 				1F336E731CB45F3F00F957AC /* FBSDKCoreKit.framework in Frameworks */,
 				1F336E751CB45F3F00F957AC /* FBSDKShareKit.framework in Frameworks */,
@@ -114,12 +145,78 @@
 		1F336E6F1CB45F1900F957AC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1F8170FE1CBD6088008A1563 /* JSONModel */,
+				1F8170A71CB71185008A1563 /* TinderSwipe */,
+				1F81709A1CB706D2008A1563 /* CoreData.framework */,
 				1F336E791CB4645A00F957AC /* Bolts.framework */,
 				1F336E701CB45F3F00F957AC /* FBSDKCoreKit.framework */,
 				1F336E711CB45F3F00F957AC /* FBSDKLoginKit.framework */,
 				1F336E721CB45F3F00F957AC /* FBSDKShareKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1F8170A71CB71185008A1563 /* TinderSwipe */ = {
+			isa = PBXGroup;
+			children = (
+				1F8170BA1CB71221008A1563 /* DraggableView.h */,
+				1F8170BB1CB71221008A1563 /* DraggableView.m */,
+				1F8170BC1CB71221008A1563 /* DraggableViewBackground.h */,
+				1F8170BD1CB71221008A1563 /* DraggableViewBackground.m */,
+				1F8170BE1CB71221008A1563 /* OverlayView.h */,
+				1F8170BF1CB71221008A1563 /* OverlayView.m */,
+			);
+			name = TinderSwipe;
+			sourceTree = "<group>";
+		};
+		1F8170FE1CBD6088008A1563 /* JSONModel */ = {
+			isa = PBXGroup;
+			children = (
+				1F8170FF1CBD6088008A1563 /* Info.plist */,
+				1F8171001CBD6088008A1563 /* JSONModel */,
+				1F8171071CBD6088008A1563 /* JSONModelLib.h */,
+				1F8171081CBD6088008A1563 /* JSONModelNetworking */,
+				1F81710F1CBD6088008A1563 /* JSONModelTransformations */,
+			);
+			name = JSONModel;
+			path = ../../JSONModel/JSONModel;
+			sourceTree = "<group>";
+		};
+		1F8171001CBD6088008A1563 /* JSONModel */ = {
+			isa = PBXGroup;
+			children = (
+				1F8171011CBD6088008A1563 /* JSONModel.h */,
+				1F8171021CBD6088008A1563 /* JSONModel.m */,
+				1F8171031CBD6088008A1563 /* JSONModelClassProperty.h */,
+				1F8171041CBD6088008A1563 /* JSONModelClassProperty.m */,
+				1F8171051CBD6088008A1563 /* JSONModelError.h */,
+				1F8171061CBD6088008A1563 /* JSONModelError.m */,
+			);
+			path = JSONModel;
+			sourceTree = "<group>";
+		};
+		1F8171081CBD6088008A1563 /* JSONModelNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				1F8171091CBD6088008A1563 /* JSONAPI.h */,
+				1F81710A1CBD6088008A1563 /* JSONAPI.m */,
+				1F81710B1CBD6088008A1563 /* JSONHTTPClient.h */,
+				1F81710C1CBD6088008A1563 /* JSONHTTPClient.m */,
+				1F81710D1CBD6088008A1563 /* JSONModel+networking.h */,
+				1F81710E1CBD6088008A1563 /* JSONModel+networking.m */,
+			);
+			path = JSONModelNetworking;
+			sourceTree = "<group>";
+		};
+		1F81710F1CBD6088008A1563 /* JSONModelTransformations */ = {
+			isa = PBXGroup;
+			children = (
+				1F8171101CBD6088008A1563 /* JSONKeyMapper.h */,
+				1F8171111CBD6088008A1563 /* JSONKeyMapper.m */,
+				1F8171121CBD6088008A1563 /* JSONValueTransformer.h */,
+				1F8171131CBD6088008A1563 /* JSONValueTransformer.m */,
+			);
+			path = JSONModelTransformations;
 			sourceTree = "<group>";
 		};
 		E4B548091CA9D397004EA764 = {
@@ -152,11 +249,10 @@
 				E4B548481CA9D3B6004EA764 /* Models */,
 				E4B548181CA9D398004EA764 /* AppDelegate.h */,
 				E4B548191CA9D398004EA764 /* AppDelegate.m */,
-				E4B5481E1CA9D398004EA764 /* Main.storyboard */,
+				E40811A41CB5F6F30052441D /* Constants.h */,
 				E4B548211CA9D398004EA764 /* Assets.xcassets */,
 				E4B548261CA9D398004EA764 /* Info.plist */,
 				E4B548151CA9D398004EA764 /* Supporting Files */,
-				E4B54A101CAA2686004EA764 /* LaunchScreen.storyboard */,
 			);
 			path = RateMyFashion;
 			sourceTree = "<group>";
@@ -192,6 +288,8 @@
 			children = (
 				E4B54A151CAA2A8F004EA764 /* MZUser.h */,
 				E4B54A161CAA2A8F004EA764 /* MZUser.m */,
+				E40A7B471CB4D59000D54F93 /* MZPhoto.h */,
+				E40A7B481CB4D59000D54F93 /* MZPhoto.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -199,6 +297,8 @@
 		E4B548491CA9D414004EA764 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E4B5481E1CA9D398004EA764 /* Main.storyboard */,
+				E4B54A101CAA2686004EA764 /* LaunchScreen.storyboard */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -208,6 +308,8 @@
 			children = (
 				E4B5481B1CA9D398004EA764 /* LoginViewController.h */,
 				E4B5481C1CA9D398004EA764 /* LoginViewController.m */,
+				1F8170C31CB71287008A1563 /* SwipeViewController.h */,
+				1F8170C41CB71287008A1563 /* SwipeViewController.m */,
 				1F336E761CB4638900F957AC /* TestViewController.h */,
 				1F336E771CB4638900F957AC /* TestViewController.m */,
 			);
@@ -325,6 +427,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F8171141CBD6088008A1563 /* Info.plist in Resources */,
 				E4B54A111CAA2686004EA764 /* LaunchScreen.storyboard in Resources */,
 				E4B548221CA9D398004EA764 /* Assets.xcassets in Resources */,
 				E4B548201CA9D398004EA764 /* Main.storyboard in Resources */,
@@ -352,9 +455,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F8171161CBD6088008A1563 /* JSONModelClassProperty.m in Sources */,
+				1F8170C01CB71221008A1563 /* DraggableView.m in Sources */,
+				1F81711A1CBD6088008A1563 /* JSONModel+networking.m in Sources */,
+				E40A7B491CB4D59000D54F93 /* MZPhoto.m in Sources */,
 				E4B5481D1CA9D398004EA764 /* LoginViewController.m in Sources */,
+				1F8171191CBD6088008A1563 /* JSONHTTPClient.m in Sources */,
+				1F8170C11CB71221008A1563 /* DraggableViewBackground.m in Sources */,
 				E4B54A171CAA2A8F004EA764 /* MZUser.m in Sources */,
+				1F81711C1CBD6088008A1563 /* JSONValueTransformer.m in Sources */,
 				E4B5481A1CA9D398004EA764 /* AppDelegate.m in Sources */,
+				1F8171181CBD6088008A1563 /* JSONAPI.m in Sources */,
+				1F8171171CBD6088008A1563 /* JSONModelError.m in Sources */,
+				1F81711B1CBD6088008A1563 /* JSONKeyMapper.m in Sources */,
+				1F8170C21CB71221008A1563 /* OverlayView.m in Sources */,
+				1F8170C51CB71287008A1563 /* SwipeViewController.m in Sources */,
+				1F8171151CBD6088008A1563 /* JSONModel.m in Sources */,
 				E4B548171CA9D398004EA764 /* main.m in Sources */,
 				1F336E781CB4638900F957AC /* TestViewController.m in Sources */,
 			);

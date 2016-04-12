@@ -34,10 +34,11 @@
     self.loginButton.center = self.view.center;
     self.loginButton.delegate = self;
     [self.view addSubview: self.loginButton];
+    //[self fetchUserInfo];
     
     // Do any additional setup after loading the view, typically from a nib.
 }
-
+ 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

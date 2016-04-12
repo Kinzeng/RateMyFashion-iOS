@@ -7,21 +7,26 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "JSONModel.h"
 
 @interface MZUser : NSObject
 
+<<<<<<< HEAD
 @property (strong, nonatomic)NSString *userId;
 @property (strong, nonatomic)NSString *firstName;
 @property (strong, nonatomic)NSString *lastName;
-@property (strong, nonatomic)MZUser *currentUser;
+
+- (id)initWithJSON:(NSDictionary * )returnedJSON andAccessToken:(NSString *) accessToken;
+- (NSString *)getUserToken;
+
++ (void)setCurrentUser: (MZUser *) currentUser;
++ (void)clearCurrentUser;
++ (MZUser *)getCurrentUser;
+=======
+@property (strong, nonatomic) NSString *userId;
+@property (strong, nonatomic) NSString *firstName;
+@property (strong, nonatomic) NSString *lastName;
 
 - (id)initWithJSON:(NSDictionary *)returnedJSON andAccessToken:(NSString *)accessToken;
 
-<<<<<<< HEAD
-+(void) setCurrentUser: (MZUser *) currentUser;
-+(void) clearCurrentUser;
-+(MZUser *) getCurrentUser;
-=======
->>>>>>> Customized some of the swipe view
+>>>>>>> 83648cbe58e0f3854d185654946ca88d0dbad8fa
 @end
