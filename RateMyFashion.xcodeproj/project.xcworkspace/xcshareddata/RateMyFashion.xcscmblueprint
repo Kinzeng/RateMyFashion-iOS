@@ -5,17 +5,24 @@
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
     "5FA3FC38AA2426C6B4D765831317071D38AFC7E0" : 0,
-    "FFC7CEC2CCE0080EB60B0716A71EC2CE91AE9870" : 0
+    "FFC7CEC2CCE0080EB60B0716A71EC2CE91AE9870" : 0,
+    "2454A7C0A4BC2A09472718EB55354F320600B245" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "4D48C0A2-4E10-4A62-87C8-B7B2F422FCC5",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "5FA3FC38AA2426C6B4D765831317071D38AFC7E0" : "..\/TinderSimpleSwipeCards",
-    "FFC7CEC2CCE0080EB60B0716A71EC2CE91AE9870" : "iOS\/"
+    "FFC7CEC2CCE0080EB60B0716A71EC2CE91AE9870" : "iOS\/",
+    "2454A7C0A4BC2A09472718EB55354F320600B245" : "..\/JSONModel"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "RateMyFashion",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
   "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "RateMyFashion.xcodeproj",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/icanzilb\/JSONModel.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2454A7C0A4BC2A09472718EB55354F320600B245"
+    },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/cwRichardKim\/TinderSimpleSwipeCards.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",

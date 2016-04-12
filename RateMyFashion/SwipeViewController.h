@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DraggableView.h"
+#import "DraggableViewBackground.h"
+#import "MZUser.h"
 
-@interface SwipeViewController : UIViewController
+@interface SwipeViewController : UIViewController <DraggableViewBackgroundDelegate>
+
+- (void)menuPressed;
+
+@property (strong, nonatomic)MZUser *user;
 
 @end

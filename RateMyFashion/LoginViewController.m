@@ -10,8 +10,8 @@
 #import "LoginViewController.h"
 #import "MZUser.h"
 #import "MZPhoto.h"
-#import "MZApi.h"
 #import "Constants.h"
+
 @interface LoginViewController ()
 
 @end
@@ -22,13 +22,13 @@
     [super viewDidLoad];
     
     /*
-    //check if the user is already logged in
-    if ([FBSDKAccessToken currentAccessToken]) {
-        TestViewController *controller = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"test"];
-        controller.text = @"Hello World!";
-        [self presentViewController:controller animated:YES completion:nil];
-    }
-    */
+     //check if the user is already logged in
+     if ([FBSDKAccessToken currentAccessToken]) {
+     TestViewController *controller = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"test"];
+     controller.text = @"Hello World!";
+     [self presentViewController:controller animated:YES completion:nil];
+     }
+     */
     
     self.loginButton = [[FBSDKLoginButton alloc] init];
     self.loginButton.center = self.view.center;
@@ -37,7 +37,7 @@
     
     // Do any additional setup after loading the view, typically from a nib.
 }
- 
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -49,20 +49,17 @@
 
 //login delegate method, called when user returns from the login dialog
 - (void)loginButton:(FBSDKLoginButton *)loginButton
-        didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
-        error:(NSError *)error {
-    if ([FBSDKAccessToken currentAccessToken]) {
+didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
+              error:(NSError *)error {
+    [self fetchUserInfoWithCompletionHandler:^{
         NSLog(@"Logged in");
         TestViewController *controller = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"test"];
-        controller.text = @"Hello World!";
         [self presentViewController:controller animated:YES completion:nil];
-
-        [self fetchUserInfo];
-    }
+    }];
 }
 
 - (void)loginButtonDidLogOut:(FBSDKLoginButton *)loginButton{
-    [MZUser setCurrentUser:nil];
+    [MZUser clearCurrentUser];
     
     NSLog(@"Logged out");
 }
@@ -73,23 +70,24 @@
 }
 
 
--(void)fetchUserInfo {
+-(void)fetchUserInfoWithCompletionHandler:(void (^)(void))segue {
     if([FBSDKAccessToken currentAccessToken]){
-
-        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" 
-                                    parameters:@{@"fields": @"id, name, link, first_name, last_name, email"}]
-                                    startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
-                                        if (!error) {
-                                            if([result isKindOfClass:[NSDictionary class]]) {
-                                                NSDictionary *jsonDict = (NSDictionary * )result;
-                                                MZUser * user = [[MZUser alloc] initWithJSON:jsonDict andAccessToken:[[FBSDKAccessToken currentAccessToken] tokenString]];
-                                                [MZUser setCurrentUser:user];
-                                            }
-                                        }
-                                        else {
-                                            NSLog(@"There was an error %@", error);
-                                        }
-        }];
+        
+        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me"
+                                           parameters:@{@"fields": @"id, name, link, first_name, last_name, email"}]
+         startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+             if (!error) {
+                 if([result isKindOfClass:[NSDictionary class]]) {
+                     NSDictionary *jsonDict = (NSDictionary * )result;
+                     MZUser *user = [[MZUser alloc] initWithJSON:jsonDict andAccessToken:[[FBSDKAccessToken currentAccessToken] tokenString]];
+                     [MZUser setCurrentUser:user];
+                     segue();
+                 }
+             }
+             else {
+                 NSLog(@"There was an error %@", error);
+             }
+         }];
     }
 }
 

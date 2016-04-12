@@ -7,18 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "JSONModel.h"
 
 @interface MZUser : NSObject
 
-@property (strong) NSString * userId;
-@property (strong) NSString * firstName;
-@property (strong) NSString * lastName;
+@property (strong, nonatomic)NSString *userId;
+@property (strong, nonatomic)NSString *firstName;
+@property (strong, nonatomic)NSString *lastName;
 
--(id) initWithJSON:(NSDictionary * )returnedJSON andAccessToken:(NSString *) accessToken;
--(NSString *) getUserToken;
+- (id)initWithJSON:(NSDictionary * )returnedJSON andAccessToken:(NSString *) accessToken;
+- (NSString *)getUserToken;
 
-+(void) setCurrentUser: (MZUser *) currentUser;
-+(void) clearCurrentUser;
-+(MZUser *) getCurrentUser;
++ (void)setCurrentUser: (MZUser *) currentUser;
++ (void)clearCurrentUser;
++ (MZUser *)getCurrentUser;
 @end

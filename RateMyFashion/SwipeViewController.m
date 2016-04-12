@@ -18,9 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     DraggableViewBackground *bg = [[DraggableViewBackground alloc] initWithFrame:self.view.frame];
-    
+    bg.delegate = self;
     [self.view addSubview:bg];
-    
     
     // Do any additional setup after loading the view.
 }
@@ -28,6 +27,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)menuPressed {
+    NSLog(@"Menu");
 }
 
 /*

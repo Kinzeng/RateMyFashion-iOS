@@ -13,7 +13,7 @@ static MZUser *currentUser;
 @implementation MZUser
 
 
--(id) initWithJSON:(NSDictionary * )returnedJSON andAccessToken:(NSString *) accessToken{
+- (id)initWithJSON:(NSDictionary * )returnedJSON andAccessToken:(NSString *) accessToken{
     if((self = [super init])){
         self.userId = accessToken;
         self.firstName = [returnedJSON objectForKey:@"first_name"];
@@ -23,20 +23,24 @@ static MZUser *currentUser;
     
 }
 
-+(void) setCurrentUser:(MZUser *)user{
++ (void)setCurrentUser:(MZUser *)user{
     currentUser = user;
 }
-+(void) clearCurrentUser{
+
++ (void)clearCurrentUser{
     currentUser = nil;
 }
-+(MZUser *) getCurrentUser{
+
++ (MZUser *)getCurrentUser{
     return currentUser;
 }
--(NSString *) getUserToken{
-    return _userId;
+
+- (NSString *) getUserToken{
+    return currentUser.userId;
 }
--(NSString *) description{
-    return [NSString stringWithFormat:@"User: FirstName=%@, LastName=%@", _firstName, _lastName];
+
+- (NSString *) description{
+    return [NSString stringWithFormat:@"User: FirstName=%@, LastName=%@", currentUser.firstName, currentUser.lastName];
 }
 
 @end

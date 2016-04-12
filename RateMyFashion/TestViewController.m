@@ -26,7 +26,7 @@
 }
 
 - (IBAction)getUserInfo:(id)sender {
-    NSLog([self.user.currentUser description]);
+    NSLog([[MZUser getCurrentUser] description]);
 }
 
 
