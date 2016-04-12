@@ -36,6 +36,9 @@
 ehthumbs.db
 Thumbs.db
 
-# Frameworks #
-##############
+# XCode Files #
+###############
+*.xcworkspace
+*.xcuserstate
+*.xcscmblueprint
 Frameworks/
