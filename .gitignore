@@ -38,6 +38,6 @@ Thumbs.db
 
 # XCode Files #
 ###############
-*.xcworkspace
 *.xcuserstate
-*.xcscmblueprint
+project.xcworkspace/
+xcuserdata/
