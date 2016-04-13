@@ -34,6 +34,7 @@
 #import <UIKit/UIKit.h>
 #import "OverlayView.h"
 #import "MZPhoto.h"
+#import "AsyncImageView.h"
 
 @protocol DraggableViewDelegate <NSObject>
 
@@ -49,12 +50,12 @@
 @property (strong, nonatomic)UIPanGestureRecognizer *panGestureRecognizer;
 @property (nonatomic)CGPoint originalPoint;
 @property (strong, nonatomic)OverlayView* overlayView;
-@property (strong, nonatomic)UILabel *information; //%%% a placeholder for any card-specific information
-@property (strong, nonatomic)UIImageView *photoView;
-@property (assign, nonatomic)MZPhoto *photo;
+@property (strong, nonatomic)AsyncImageView *photoView;
+@property (strong, nonatomic)MZPhoto *photo;
 @property (assign, nonatomic)NSInteger index;
-@property (strong, nonatomic)NSString *testURL;
 
+- (id)initWithFrame:(CGRect)frame
+             andPhoto:(MZPhoto *)photo;
 - (void)leftClickAction;
 - (void)rightClickAction;
 

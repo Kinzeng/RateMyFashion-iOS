@@ -8,12 +8,9 @@
 
 #import "TestViewController.h"
 #import "LoginViewController.h"
-<<<<<<< HEAD
 #import "MZUser.h"
 #import "MZPhoto.h"
 #import "Constants.h"
-=======
->>>>>>> 83648cbe58e0f3854d185654946ca88d0dbad8fa
 
 @interface LoginViewController ()
 
@@ -25,7 +22,6 @@
     [super viewDidLoad];
     
     /*
-<<<<<<< HEAD
      //check if the user is already logged in
      if ([FBSDKAccessToken currentAccessToken]) {
      TestViewController *controller = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"test"];
@@ -33,24 +29,16 @@
      [self presentViewController:controller animated:YES completion:nil];
      }
      */
-=======
-    //check if the user is already logged in
-    if ([FBSDKAccessToken currentAccessToken]) {
-        TestViewController *controller = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"test"];
-        controller.user = self.user;
-        [self presentViewController:controller animated:YES completion:nil];
-    }
-    */
->>>>>>> 83648cbe58e0f3854d185654946ca88d0dbad8fa
     
     self.loginButton = [[FBSDKLoginButton alloc] init];
     self.loginButton.center = self.view.center;
     self.loginButton.delegate = self;
     [self.view addSubview: self.loginButton];
+    //[self fetchUserInfo];
     
     // Do any additional setup after loading the view, typically from a nib.
 }
-
+ 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -62,7 +50,6 @@
 
 //login delegate method, called when user returns from the login dialog
 - (void)loginButton:(FBSDKLoginButton *)loginButton
-<<<<<<< HEAD
 didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
               error:(NSError *)error {
     [self fetchUserInfoWithCompletionHandler:^{
@@ -70,18 +57,6 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
         TestViewController *controller = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"test"];
         [self presentViewController:controller animated:YES completion:nil];
     }];
-=======
-        didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
-        error:(NSError *)error {
-    if ([FBSDKAccessToken currentAccessToken]) {
-        [self fetchUserInfoWithCompletionHandler:^() {
-            TestViewController *controller = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"test"];
-            controller.user = self.user;
-            [self presentViewController:controller animated:YES completion:nil];
-        }];
-        NSLog(@"Logged in");
-    }
->>>>>>> 83648cbe58e0f3854d185654946ca88d0dbad8fa
 }
 
 - (void)loginButtonDidLogOut:(FBSDKLoginButton *)loginButton{
@@ -91,14 +66,34 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
 }
 
 -(void) showUserInfo {
-    NSLog(@"User %@", [_user description]);
-    NSLog(@"User Token %@", [_user userId]);
+    //Test methods for API endpoints.
+    NSLog(@"User %@", [[MZUser getCurrentUser] description]);
+    NSLog(@"User Token %@", [[MZUser getCurrentUser] getUserToken]);
+<<<<<<< HEAD
+=======
+//    Load Photos working
+//    [MZApi loadOwnPhotosWithId: @"1234" andNumOfPhotos:3 andCompletionHandler:^(NSArray *results) {
+//        if(results != nil){
+//            NSLog(@"%@", results);
+//        }
+//    }];
+    //Like Photo working. 
+//    [MZApi dislikePhotoWithPhotoID:1 andCompletionHandler:^(MZPhoto * photo) {
+//        NSLog(@"%@", photo);
+//    }];
+//    [MZApi loadOwnPhotoWithUserId:@"kai1234" andCompletionHandler:^(NSArray *ownPhotos) {
+//        NSLog(@" %@", ownPhotos);
+//    }];
+//    [MZApi deletePhotoWithId:1 andCompletionHandler:^(MZPhoto *deletedPhoto) {
+//        NSLog(@" %@", deletedPhoto);
+//    }];
+    
+>>>>>>> origin/backend
 }
 
 
 -(void)fetchUserInfoWithCompletionHandler:(void (^)(void))segue {
     if([FBSDKAccessToken currentAccessToken]){
-<<<<<<< HEAD
         
         [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me"
                                            parameters:@{@"fields": @"id, name, link, first_name, last_name, email"}]
@@ -115,23 +110,6 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
                  NSLog(@"There was an error %@", error);
              }
          }];
-=======
-
-        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" 
-                                    parameters:@{@"fields": @"id, name, link, first_name, last_name, email"}]
-                                    startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
-                                        if (!error) {
-                                            if([result isKindOfClass:[NSDictionary class]]) {
-                                                NSDictionary *jsonDict = (NSDictionary *)result;
-                                                self.user = [[MZUser alloc] initWithJSON:jsonDict andAccessToken:[[FBSDKAccessToken currentAccessToken] tokenString]];
-                                                segue();
-                                            }
-                                        }
-                                        else
-                                            NSLog(@"There was an error %@", error);
-                                        
-        }];
->>>>>>> 83648cbe58e0f3854d185654946ca88d0dbad8fa
     }
 }
 

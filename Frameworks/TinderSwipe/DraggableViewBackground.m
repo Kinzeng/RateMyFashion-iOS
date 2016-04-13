@@ -37,6 +37,10 @@ static float CARD_WIDTH;
         [super layoutSubviews];
         [self setupView];
         exampleCardLabels = [[NSArray alloc]initWithObjects:@"first", @"second", @"third", @"fourth", @"last", nil]; //%%% placeholder for card-specific information
+        
+        MZPhoto *photo = [[MZPhoto alloc] init];
+        photo.file_url = @"https://scontent.xx.fbcdn.net/v/t1.0-9/10559810_782711591760368_5184506463589103282_n.jpg?oh=7c7adb02fb54bd3c183ad01efadb7180&oe=5779FADD";
+        photoArray = [[NSMutableArray alloc] initWithObjects:photo, photo, photo, photo, photo, photo, photo, photo, photo, photo, photo, photo, nil];
         loadedCards = [[NSMutableArray alloc] init];
         allCards = [[NSMutableArray alloc] init];
         cardsLoadedIndex = 0;
@@ -81,10 +85,9 @@ static float CARD_WIDTH;
 // use "index" to indicate where the information should be pulled.  If this doesn't apply to you, feel free
 // to get rid of it (eg: if you are building cards from data from the internet)
 - (DraggableView *)createDraggableViewWithDataAtIndex:(NSInteger)index {
-    DraggableView *draggableView = [[DraggableView alloc]initWithFrame:CGRectMake((self.frame.size.width - CARD_WIDTH) / 2, (self.frame.size.height - CARD_HEIGHT)/2, CARD_WIDTH, CARD_HEIGHT)];
-    draggableView.information.text = [exampleCardLabels objectAtIndex:index]; //%%% placeholder for card-specific information
+    DraggableView *draggableView = [[DraggableView alloc]initWithFrame:CGRectMake((self.frame.size.width - CARD_WIDTH) / 2, (self.frame.size.height - CARD_HEIGHT)/2, CARD_WIDTH, CARD_HEIGHT)
+                                                              andPhoto:[photoArray objectAtIndex:index]];
     //TODO: update view with data
-    draggableView.photo = [photoArray objectAtIndex:index];
     draggableView.index = index;
     draggableView.delegate = self;
     
@@ -94,19 +97,19 @@ static float CARD_WIDTH;
 //%%% loads all the cards and puts the first x in the "loaded cards" array
 - (void)loadCards {
     
-    NSInteger numLoadedCardsCap = (([exampleCardLabels count] > MAX_BUFFER_SIZE) ? MAX_BUFFER_SIZE : [exampleCardLabels count]);
+    NSInteger numLoadedCardsCap = (([photoArray count] > MAX_BUFFER_SIZE) ? MAX_BUFFER_SIZE : [photoArray count]);
     //%%% if the buffer size is greater than the data size, there will be an array error, so this makes sure that doesn't happen
     
     //%%% loops through the exampleCardsLabels array to create a card for each label.  This should be customized by removing "exampleCardLabels" with your own array of data
-    for (int i = 0; i < [exampleCardLabels count]; i++) {
-        DraggableView *newCard = [self createDraggableViewWithDataAtIndex:i];
-        [allCards addObject:newCard];
-        
-        if (i < numLoadedCardsCap) {
-            //%%% adds a small number of cards to be loaded
-            [loadedCards addObject:newCard];
-        }
-    }
+//    for (int i = 0; i < [exampleCardLabels count]; i++) {
+//        DraggableView *newCard = [self createDraggableViewWithDataAtIndex:i];
+//        [allCards addObject:newCard];
+//        
+//        if (i < numLoadedCardsCap) {
+//            //%%% adds a small number of cards to be loaded
+//            [loadedCards addObject:newCard];
+//        }
+//    }
     
     for (NSInteger i = 0; i < [photoArray count]; i++) {
         DraggableView *c = [self createDraggableViewWithDataAtIndex:i];
@@ -130,7 +133,6 @@ static float CARD_WIDTH;
 //%%% action called when the card goes to the left.
 - (void)cardSwipedLeft:(UIView *)card {
     DraggableView *c = (DraggableView *)card;
-    
     //TODO: HTTP request to dislike the photo
     
     [loadedCards removeObjectAtIndex:0]; //%%% card was swiped, so it's no longer a "loaded card"
@@ -139,14 +141,13 @@ static float CARD_WIDTH;
     if (cardsLoadedIndex < [allCards count]) { //%%% if we haven't reached the end of all cards, put another into the loaded cards
         [loadedCards addObject:[allCards objectAtIndex:cardsLoadedIndex]];
         cardsLoadedIndex++;//%%% loaded a card, so have to increment count
-        [self insertSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE-1)] belowSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE-2)]];
+        [self insertSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE - 1)] belowSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE - 2)]];
     }
 }
 
 //%%% action called when the card goes to the right.
 - (void)cardSwipedRight:(UIView *)card {
     DraggableView *c = (DraggableView *)card;
-    
     //TODO: HTTP request to like the photo
     
     [loadedCards removeObjectAtIndex:0]; //%%% card was swiped, so it's no longer a "loaded card"
@@ -155,7 +156,7 @@ static float CARD_WIDTH;
     if (cardsLoadedIndex < [allCards count]) { //%%% if we haven't reached the end of all cards, put another into the loaded cards
         [loadedCards addObject:[allCards objectAtIndex:cardsLoadedIndex]];
         cardsLoadedIndex++;//%%% loaded a card, so have to increment count
-        [self insertSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE-1)] belowSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE-2)]];
+        [self insertSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE - 1)] belowSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE - 2)]];
     }
 }
 

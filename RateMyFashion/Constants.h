@@ -2,14 +2,17 @@
 //  Constants.h
 //  RateMyFashion
 //
-//  Created by Kai Mou on 4/6/16.
+//  Created by Kai Mou on 4/12/16.
 //  Copyright © 2016 MouZhang. All rights reserved.
 //
+#include <UIKit/UIKit.h>
 
-#ifndef Constants_h
-#define Constants_h
-NSString * base_url = @"http://localhost:3000";
-//define other endpoints here. 
+@interface Constants : NSObject
+extern NSString * const base_url;
+extern NSString * const load_photo_url;
+extern NSString * const like_photo_url;
+extern NSString * const dislike_photo_url;
+extern NSString * const load_own_photos_url;
+extern NSString * const delete_photo_url;
 
-
-#endif /* Constants_h */
+@end

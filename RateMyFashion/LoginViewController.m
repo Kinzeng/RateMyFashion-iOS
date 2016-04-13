@@ -10,6 +10,7 @@
 #import "LoginViewController.h"
 #import "MZUser.h"
 #import "MZPhoto.h"
+#import "MZApi.h"
 #import "Constants.h"
 
 @interface LoginViewController ()
@@ -22,19 +23,18 @@
     [super viewDidLoad];
     
     /*
-     //check if the user is already logged in
-     if ([FBSDKAccessToken currentAccessToken]) {
-     TestViewController *controller = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"test"];
-     controller.text = @"Hello World!";
-     [self presentViewController:controller animated:YES completion:nil];
-     }
-     */
+    //check if the user is already logged in
+    if ([FBSDKAccessToken currentAccessToken]) {
+        TestViewController *controller = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"test"];
+        controller.text = @"Hello World!";
+        [self presentViewController:controller animated:YES completion:nil];
+    }
+    */
     
     self.loginButton = [[FBSDKLoginButton alloc] init];
     self.loginButton.center = self.view.center;
     self.loginButton.delegate = self;
     [self.view addSubview: self.loginButton];
-    //[self fetchUserInfo];
     
     // Do any additional setup after loading the view, typically from a nib.
 }
@@ -66,8 +66,34 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
 }
 
 -(void) showUserInfo {
+    //Test methods for API endpoints.
     NSLog(@"User %@", [[MZUser getCurrentUser] description]);
     NSLog(@"User Token %@", [[MZUser getCurrentUser] getUserToken]);
+//    Load Photos working
+//    [MZApi loadOwnPhotosWithId: @"1234" andNumOfPhotos:3 andCompletionHandler:^(NSArray *results) {
+//        if(results != nil){
+//            NSLog(@"%@", results);
+//        }
+//    }];
+    //Like Photo working. 
+//    [MZApi dislikePhotoWithPhotoID:1 andCompletionHandler:^(MZPhoto * photo) {
+//        NSLog(@"%@", photo);
+//    }];
+//    [MZApi loadOwnPhotoWithUserId:@"kai1234" andCompletionHandler:^(NSArray *ownPhotos) {
+//        NSLog(@" %@", ownPhotos);
+//    }];
+//    [MZApi deletePhotoWithId:1 andCompletionHandler:^(MZPhoto *deletedPhoto) {
+//        NSLog(@" %@", deletedPhoto);
+//    }];
+//    
+//    [MZApi loadOwnPhotosWithCompletionHandler:^(NSMutableArray *results) {
+//        if(results != nil){
+//            NSLog(@"Not null!");
+//        }
+//    }];
+    
+    
+        
 }
 
 

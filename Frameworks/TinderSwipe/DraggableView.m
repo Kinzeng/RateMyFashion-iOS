@@ -26,29 +26,25 @@
 @synthesize delegate;
 
 @synthesize panGestureRecognizer;
-@synthesize information;
 @synthesize overlayView;
+@synthesize photoView;
+@synthesize photo;
 
-- (id)initWithFrame:(CGRect)frame {
+- (id)initWithFrame:(CGRect)frame
+           andPhoto:(MZPhoto *)photoModel {
     self = [super initWithFrame:frame];
     if (self) {
         [self setupView];
         
-#warning placeholder stuff, replace with card-specific information {
-        information = [[UILabel alloc]initWithFrame:CGRectMake(0, 50, self.frame.size.width, 100)];
-        information.text = @"no info given";
-        [information setTextAlignment:NSTextAlignmentCenter];
-        information.textColor = [UIColor blackColor];
-        
-        self.backgroundColor = [UIColor whiteColor];
-#warning placeholder stuff, replace with card-specific information }
+        photo = photoModel;
+        photoView = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        [photoView setImageURL:[NSURL URLWithString:[photoModel file_url]]];
+        [self addSubview:photoView];
         
         panGestureRecognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(beingDragged:)];
-        
         [self addGestureRecognizer:panGestureRecognizer];
-        [self addSubview:information];
         
-        overlayView = [[OverlayView alloc]initWithFrame:CGRectMake(self.frame.size.width/2-100, 0, 100, 100)];
+        overlayView = [[OverlayView alloc]initWithFrame:CGRectMake(self.frame.size.width / 2 - 100, 0, 100, 100)];
         overlayView.alpha = 0;
         [self addSubview:overlayView];
     }
@@ -124,11 +120,10 @@
 
 //%%% checks to see if you are moving right or left and applies the correct overlay image
 - (void)updateOverlay:(CGFloat)distance {
-    if (distance > 0) {
+    if (distance > 0)
         overlayView.mode = GGOverlayViewModeRight;
-    } else {
+    else
         overlayView.mode = GGOverlayViewModeLeft;
-    }
     
     overlayView.alpha = MIN(fabsf((float)distance)/100, 0.4);
 }
@@ -211,7 +206,5 @@
     
     NSLog(@"NO");
 }
-
-
 
 @end
