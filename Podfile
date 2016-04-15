@@ -3,3 +3,6 @@ platform :ios, '8.0'
 
 pod 'AFNetworking', '~> 3.0'
 pod 'JSONModel'
+pod 'FBSDKCoreKit'
+pod 'FBSDKShareKit'
+pod 'FBSDKLoginKit'

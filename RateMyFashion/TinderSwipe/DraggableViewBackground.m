@@ -61,7 +61,6 @@ static float CARD_WIDTH;
     [menuButton setImage:[UIImage imageNamed:@"menuButton"] forState:UIControlStateNormal];
     [menuButton addTarget:self action:@selector(menuPressed) forControlEvents:UIControlEventTouchUpInside];
     
-    
     int messageWidth = 18;
     int messageHeight = 18;
     messageButton = [[UIButton alloc]initWithFrame:CGRectMake(self.frame.size.width - (17 + messageWidth), 34, messageWidth, messageHeight)];
@@ -81,13 +80,10 @@ static float CARD_WIDTH;
     [self addSubview:checkButton];
 }
 
-//%%% creates a card and returns it.  This should be customized to fit your needs.
-// use "index" to indicate where the information should be pulled.  If this doesn't apply to you, feel free
-// to get rid of it (eg: if you are building cards from data from the internet)
+//%%% creates a card and returns it
 - (DraggableView *)createDraggableViewWithDataAtIndex:(NSInteger)index {
     DraggableView *draggableView = [[DraggableView alloc]initWithFrame:CGRectMake((self.frame.size.width - CARD_WIDTH) / 2, (self.frame.size.height - CARD_HEIGHT)/2, CARD_WIDTH, CARD_HEIGHT)
                                                               andPhoto:[photoArray objectAtIndex:index]];
-    //TODO: update view with data
     draggableView.index = index;
     draggableView.delegate = self;
     
@@ -133,7 +129,12 @@ static float CARD_WIDTH;
 //%%% action called when the card goes to the left.
 - (void)cardSwipedLeft:(UIView *)card {
     DraggableView *c = (DraggableView *)card;
-    //TODO: HTTP request to dislike the photo
+    [MZApi dislikePhotoWithPhotoID:c.photo.photo_id andCompletionHandler:^(MZPhoto *photo, NSError *error) {
+        if (error)
+            NSLog(@"%ld: %@", (long)error.code, error.domain);
+        else
+            NSLog(@"Disliked photo %d", c.photo.photo_id);
+    }];
     
     [loadedCards removeObjectAtIndex:0]; //%%% card was swiped, so it's no longer a "loaded card"
     [allCards setObject:[NSNull null] atIndexedSubscript:c.index];
@@ -148,7 +149,12 @@ static float CARD_WIDTH;
 //%%% action called when the card goes to the right.
 - (void)cardSwipedRight:(UIView *)card {
     DraggableView *c = (DraggableView *)card;
-    //TODO: HTTP request to like the photo
+    [MZApi likePhotoWithPhotoID:c.photo.photo_id andCompletionHandler:^(MZPhoto *photo, NSError *error) {
+        if (error)
+            NSLog(@"%ld: %@", (long)error.code, error.domain);
+        else
+            NSLog(@"Liked photo %d", c.photo.photo_id);
+    }];
     
     [loadedCards removeObjectAtIndex:0]; //%%% card was swiped, so it's no longer a "loaded card"
     [allCards setObject:[NSNull null] atIndexedSubscript:c.index];

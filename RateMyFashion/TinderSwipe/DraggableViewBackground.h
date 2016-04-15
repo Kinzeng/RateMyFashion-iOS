@@ -33,6 +33,7 @@
 #import <UIKit/UIKit.h>
 #import "DraggableView.h"
 #import "MZUser.h"
+#import "MZApi.h"
 
 @protocol DraggableViewBackgroundDelegate <NSObject>
 

@@ -7,6 +7,7 @@
 //
 
 #import "TestViewController.h"
+#import "SwipeViewController.h"
 #import "LoginViewController.h"
 #import "MZUser.h"
 #import "MZPhoto.h"
@@ -22,21 +23,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    /*
-    //check if the user is already logged in
-    if ([FBSDKAccessToken currentAccessToken]) {
-        TestViewController *controller = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"test"];
-        controller.text = @"Hello World!";
-        [self presentViewController:controller animated:YES completion:nil];
-    }
-    */
-    
     self.loginButton = [[FBSDKLoginButton alloc] init];
     self.loginButton.center = self.view.center;
     self.loginButton.delegate = self;
     [self.view addSubview: self.loginButton];
     
     // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    //check if the user is already logged in
+    if ([FBSDKAccessToken currentAccessToken])
+        [self segueToSwipe];
 }
  
 - (void)didReceiveMemoryWarning {
@@ -54,8 +52,7 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
               error:(NSError *)error {
     [self fetchUserInfoWithCompletionHandler:^{
         NSLog(@"Logged in");
-        TestViewController *controller = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"test"];
-        [self presentViewController:controller animated:YES completion:nil];
+        [self segueToSwipe];
     }];
 }
 
@@ -91,13 +88,19 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
 //            NSLog(@"Not null!");
 //        }
 //    }];
-    
-    
-        
 }
 
+- (void)segueToTest {
+    TestViewController *controller = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"test"];
+    [self presentViewController:controller animated:YES completion:nil];
+}
 
--(void)fetchUserInfoWithCompletionHandler:(void (^)(void))segue {
+- (void)segueToSwipe {
+    SwipeViewController *controller = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"swipe"];
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+- (void)fetchUserInfoWithCompletionHandler:(void (^)(void))segue {
     if([FBSDKAccessToken currentAccessToken]){
         
         [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me"

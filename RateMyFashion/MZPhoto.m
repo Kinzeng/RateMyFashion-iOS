@@ -10,8 +10,4 @@
 
 @implementation MZPhoto
 
-- (NSString *)description {
-    return [NSString stringWithFormat:@"id: %d/nuser: %@/ndislikes: %d/nlikes: %d/nurl: %@", _photo_id, _user_id, _dislikes, _likes, _file_url];
-}
-
 @end

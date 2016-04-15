@@ -14,10 +14,20 @@
 
 @interface MZApi : NSObject
 
-+ (void)loadPhotosWithId:(NSString *)userId andNumOfPhotos:(int)numOfPhotos andCompletionHandler:(void (^)(NSArray *results))callback;
-+ (void)likePhotoWithPhotoId:(int)photoID andCompletionHandler:(void(^)(MZPhoto *))callback;
-+ (void)dislikePhotoWithPhotoID:(int)photoID andCompletionHandler:(void(^)(MZPhoto *))callback;
-+ (void)loadOwnPhotoWithUserId:(NSString * )userID andCompletionHandler:(void(^)(NSArray *))callback;
-+ (void)deletePhotoWithId:(int)photoID andCompletionHandler:(void(^)(MZPhoto *))callback;
++ (void)loadPhotosWithID:(NSString *)userID
+          andNumOfPhotos:(int)numOfPhotos
+    andCompletionHandler:(void (^)(NSArray *results, NSError *error))callback;
+
++ (void)likePhotoWithPhotoID:(int)photoID
+        andCompletionHandler:(void(^)(MZPhoto *photo, NSError *error))callback;
+
++ (void)dislikePhotoWithPhotoID:(int)photoID
+           andCompletionHandler:(void(^)(MZPhoto *photo, NSError *error))callback;
+
++ (void)loadOwnPhotoWithUserID:(NSString * )userID
+          andCompletionHandler:(void(^)(NSArray *user, NSError *error))callback;
+
++ (void)deletePhotoWithID:(int)photoID
+     andCompletionHandler:(void(^)(MZPhoto *photo, NSError *error))callback;
 
 @end

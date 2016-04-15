@@ -10,76 +10,83 @@
 
 @implementation MZApi
 
-+ (void)loadPhotosWithId:(NSString *)userId
++ (void)loadPhotosWithID:(NSString *)userID
           andNumOfPhotos:(int)numOfPhotos
-    andCompletionHandler:(void (^)(NSArray *results))callback {
+    andCompletionHandler:(void (^)(NSArray *results, NSError *error))callback {
     
-    NSDictionary *parameters = @{@"user_id": userId, @"num" : [@(numOfPhotos)stringValue]};
+    NSDictionary *parameters = @{@"user_id": userID, @"num" : [@(numOfPhotos) stringValue]};
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager GET:load_photo_url parameters:parameters progress:nil success:^(NSURLSessionDataTask *task, id  responseObject) {
-        NSArray *items = responseObject;
-                    NSMutableArray *returnedPhotos = [NSMutableArray new];
-                    [items enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                        NSError *error = nil;
-                        MZPhoto *photo = [[MZPhoto alloc]initWithDictionary:obj error:&error];
-                        [returnedPhotos addObject:photo];
-        
-                    }];
-                    
-                    callback(returnedPhotos);
-
-    } failure:^(NSURLSessionDataTask *operation, NSError *error) {
-        NSLog(@"Failed");
-    }];
-
+    [manager GET:load_photo_url
+      parameters:parameters
+        progress:nil
+         success:^(NSURLSessionDataTask *task, id  responseObject) {
+             NSArray *items = responseObject;
+             NSMutableArray *returnedPhotos = [NSMutableArray new];
+             [items enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                 NSError *error = nil;
+                 MZPhoto *photo = [[MZPhoto alloc] initWithDictionary:obj error:&error];
+                 [returnedPhotos addObject:photo];
+             }];
+             
+             //TODO: handle error
+             callback(returnedPhotos, nil);
+         }
+         failure:^(NSURLSessionDataTask *operation, NSError *error) {
+             NSLog(@"Failed");
+         }];
 }
 
-+ (void)likePhotoWithPhotoId:(int)photoID
-        andCompletionHandler:(void(^)(MZPhoto *photo))callback {
++ (void)likePhotoWithPhotoID:(int)photoID
+        andCompletionHandler:(void(^)(MZPhoto *photo, NSError *error))callback {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
     NSDictionary *parameters = @{@"photo_id": [@(photoID) stringValue]};
-
+    
     [manager POST:like_photo_url
        parameters:parameters
          progress:nil
           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"Response: %@", responseObject);
-        NSError *err = nil;
-        MZPhoto *photo = [[MZPhoto alloc] initWithDictionary:responseObject error:&err];
-        callback(photo);
-        
-    }
+              NSLog(@"Response: %@", responseObject);
+              NSError *err = nil;
+              if (responseObject[@"error"])
+                  callback(nil, [NSError errorWithDomain:responseObject[@"message"] code:[responseObject[@"error"] integerValue] userInfo:NULL]);
+              else {
+                  MZPhoto *photo = [[MZPhoto alloc] initWithDictionary:responseObject error:&err];
+                  callback(photo, nil);
+              }
+          }
           failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"Photo liking Failed");
-    }];
-    
+              NSLog(@"Photo liking Failed");
+          }];
 }
 
 + (void)dislikePhotoWithPhotoID:(int)photoID
-           andCompletionHandler:(void (^)(MZPhoto *))callback {
+           andCompletionHandler:(void (^)(MZPhoto *photo, NSError *error))callback {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
     NSDictionary *parameters = @{@"photo_id": [@(photoID) stringValue]};
     
     [manager POST:dislike_photo_url
        parameters:parameters
-         progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"Response: %@", responseObject);
-        NSError *err = nil;
-        MZPhoto *photo = [[MZPhoto alloc] initWithDictionary:responseObject error:&err];
-        callback(photo);
-        
-    }
+         progress:nil
+          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+              NSLog(@"Response: %@", responseObject);
+              NSError *err = nil;
+              if (responseObject[@"error"])
+                  callback(nil, [NSError errorWithDomain:responseObject[@"message"] code:[responseObject[@"error"] integerValue] userInfo:NULL]);
+              else {
+                  MZPhoto *photo = [[MZPhoto alloc] initWithDictionary:responseObject error:&err];
+                  callback(photo, nil);
+              }
+          }
           failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"Photo dislike Failed");
-    }];
-
+              NSLog(@"Photo dislike Failed");
+          }];
 }
 
-+ (void)loadOwnPhotoWithUserId:(NSString *)userID
-          andCompletionHandler:(void(^)(NSArray *))callback {
++ (void)loadOwnPhotoWithUserID:(NSString *)userID
+          andCompletionHandler:(void(^)(NSArray *photos, NSError *error))callback {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
     NSDictionary *parameters = @{@"user_id": userID};
@@ -88,26 +95,24 @@
       parameters:parameters
         progress:nil
          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSArray *items = responseObject;
-        NSMutableArray *returnedPhotos = [NSMutableArray new];
-        [items enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            NSError *error = nil;
-            MZPhoto *photo = [[MZPhoto alloc]initWithDictionary:obj error:&error];
-            [returnedPhotos addObject:photo];
-            
-        }];
-        
-        callback(returnedPhotos);
-        
-    }
+             NSArray *items = responseObject;
+             NSMutableArray *returnedPhotos = [NSMutableArray new];
+             [items enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                 NSError *error = nil;
+                 MZPhoto *photo = [[MZPhoto alloc]initWithDictionary:obj error:&error];
+                 [returnedPhotos addObject:photo];
+             }];
+             
+             //TODO: handle error
+             callback(returnedPhotos, nil);
+         }
          failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"Photo dislike Failed");
-    }];
-
+             NSLog(@"Photo dislike Failed");
+         }];
 }
 
-+(void) deletePhotoWithId:(int)photoID
-     andCompletionHandler:(void (^)(MZPhoto *))callback{
++ (void)deletePhotoWithID:(int)photoID
+     andCompletionHandler:(void (^)(MZPhoto *photo, NSError *error))callback {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
     NSDictionary *parameters = @{@"photo_id": [@(photoID) stringValue]};
@@ -116,19 +121,17 @@
        parameters:parameters
          progress:nil
           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSError *err = nil;
-        MZPhoto *photo = [[MZPhoto alloc] initWithDictionary:responseObject error:&err];
-        callback(photo);
-        
-    }
+              NSError *err = nil;
+              MZPhoto *photo = [[MZPhoto alloc] initWithDictionary:responseObject error:&err];
+              
+              if ([photo error])
+                  callback(nil, [NSError errorWithDomain:[photo error] code:204 userInfo:nil]);
+              else
+                  callback(photo, nil);
+          }
           failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"Photo delete Failed");
-    }];
-
+              NSLog(@"Photo delete Failed");
+          }];
 }
-
-
-                                                
-
 
 @end

@@ -30,7 +30,7 @@
 }
 
 - (void)menuPressed {
-    NSLog(@"Menu");
+    NSLog([[MZUser getCurrentUser] description]);
 }
 
 /*

@@ -14,6 +14,4 @@
 
 - (void)menuPressed;
 
-@property (strong, nonatomic)MZUser *user;
-
 @end
