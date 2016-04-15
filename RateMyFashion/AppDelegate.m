@@ -28,10 +28,12 @@
     
     self.window.backgroundColor = [UIColor whiteColor];
     
-    UIViewController *cont=[SwipeViewController alloc];
+    UIViewController *login=[LoginViewController alloc];
+    UIViewController *swipe = [SwipeViewController alloc];
     
-    self.navController=[[UINavigationController alloc]initWithRootViewController:cont];
+    self.navController=[[UINavigationController alloc]initWithRootViewController:login];
     [self.navController setNavigationBarHidden:TRUE];
+    [self.navController pushViewController:swipe animated:TRUE];
     
     [self.window setRootViewController:navController];
     
