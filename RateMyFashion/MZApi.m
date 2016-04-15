@@ -10,7 +10,7 @@
 
 @implementation MZApi
 
-+ (void)loadPhotosWithID:(NSString *)userID
++ (void)loadRandomPhotosWithID:(NSString *)userID
           andNumOfPhotos:(int)numOfPhotos
     andCompletionHandler:(void (^)(NSArray *results, NSError *error))callback {
     
@@ -86,7 +86,7 @@
 }
 
 + (void)loadOwnPhotoWithUserID:(NSString *)userID
-          andCompletionHandler:(void(^)(NSArray *photos, NSError *error))callback {
+          andCompletionHandler:(void(^)(NSMutableArray *photos, NSError *error))callback {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
     NSDictionary *parameters = @{@"user_id": userID};
@@ -124,10 +124,7 @@
               NSError *err = nil;
               MZPhoto *photo = [[MZPhoto alloc] initWithDictionary:responseObject error:&err];
               
-              if ([photo error])
-                  callback(nil, [NSError errorWithDomain:[photo error] code:204 userInfo:nil]);
-              else
-                  callback(photo, nil);
+              callback(photo, nil);
           }
           failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
               NSLog(@"Photo delete Failed");

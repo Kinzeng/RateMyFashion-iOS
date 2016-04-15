@@ -11,6 +11,7 @@
 static MZUser *currentUser;
 
 @implementation MZUser
+@synthesize photoList;
 
 
 - (id)initWithJSON:(NSDictionary * )returnedJSON andAccessToken:(NSString *) accessToken{
@@ -33,6 +34,9 @@ static MZUser *currentUser;
 
 + (MZUser *)getCurrentUser{
     return currentUser;
+}
++(void) setPhotoList:(NSArray *)photosFromHTTP{
+    self.photoList = photosFromHTTP;
 }
 
 - (NSString *) getUserToken{

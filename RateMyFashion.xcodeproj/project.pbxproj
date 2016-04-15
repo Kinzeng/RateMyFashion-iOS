@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1F0467F71CBEAE2000998E87 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0467F61CBEAE2000998E87 /* AsyncImageView.m */; };
 		1F336E781CB4638900F957AC /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F336E771CB4638900F957AC /* TestViewController.m */; };
 		1F8171941CBDC2A1008A1563 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 1F8171931CBDC2A1008A1563 /* Podfile */; };
 		1F8F74291CBED0600056127D /* libAFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F8F74281CBED0600056127D /* libAFNetworking.a */; };
@@ -22,6 +21,8 @@
 		1F8F743F1CBEEF010056127D /* libJSONModel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F8F743A1CBEEF010056127D /* libJSONModel.a */; };
 		1FDCD7491CBEC7B700B99F19 /* SwipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDCD7481CBEC7B700B99F19 /* SwipeViewController.m */; };
 		E40A7B491CB4D59000D54F93 /* MZPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = E40A7B481CB4D59000D54F93 /* MZPhoto.m */; };
+		E420082E1CC187C30025F9F4 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E42007ED1CC187C30025F9F4 /* AsyncImageView.m */; };
+		E420085E1CC1894E0025F9F4 /* PhotoGalleryController.m in Sources */ = {isa = PBXBuildFile; fileRef = E420085D1CC1894E0025F9F4 /* PhotoGalleryController.m */; };
 		E4B548171CA9D398004EA764 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E4B548161CA9D398004EA764 /* main.m */; };
 		E4B5481A1CA9D398004EA764 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E4B548191CA9D398004EA764 /* AppDelegate.m */; };
 		E4B5481D1CA9D398004EA764 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4B5481C1CA9D398004EA764 /* LoginViewController.m */; };
@@ -54,8 +55,6 @@
 
 /* Begin PBXFileReference section */
 		04C661822A84B4777F024E51 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		1F0467F51CBEAE2000998E87 /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageView.h; sourceTree = "<group>"; };
-		1F0467F61CBEAE2000998E87 /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
 		1F336E761CB4638900F957AC /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		1F336E771CB4638900F957AC /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		1F8171931CBDC2A1008A1563 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
@@ -79,6 +78,10 @@
 		E40811A41CB5F6F30052441D /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		E40A7B471CB4D59000D54F93 /* MZPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZPhoto.h; sourceTree = "<group>"; };
 		E40A7B481CB4D59000D54F93 /* MZPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZPhoto.m; sourceTree = "<group>"; };
+		E42007EC1CC187C30025F9F4 /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageView.h; sourceTree = "<group>"; };
+		E42007ED1CC187C30025F9F4 /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
+		E420085C1CC1894E0025F9F4 /* PhotoGalleryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoGalleryController.h; sourceTree = "<group>"; };
+		E420085D1CC1894E0025F9F4 /* PhotoGalleryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoGalleryController.m; sourceTree = "<group>"; };
 		E4B548121CA9D397004EA764 /* RateMyFashion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RateMyFashion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B548161CA9D398004EA764 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E4B548181CA9D398004EA764 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -133,26 +136,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1F0467F41CBEAE2000998E87 /* AsyncImageView */ = {
-			isa = PBXGroup;
-			children = (
-				1F0467F51CBEAE2000998E87 /* AsyncImageView.h */,
-				1F0467F61CBEAE2000998E87 /* AsyncImageView.m */,
-			);
-			name = AsyncImageView;
-			path = ../../AsyncImageView/AsyncImageView;
-			sourceTree = "<group>";
-		};
 		1F336E6F1CB45F1900F957AC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E42007EA1CC187C30025F9F4 /* AsyncImageView */,
 				1F8F74361CBEEF010056127D /* libBolts.a */,
 				1F8F74371CBEEF010056127D /* libFBSDKCoreKit.a */,
 				1F8F74381CBEEF010056127D /* libFBSDKLoginKit.a */,
 				1F8F74391CBEEF010056127D /* libFBSDKShareKit.a */,
 				1F8F743A1CBEEF010056127D /* libJSONModel.a */,
 				1F8F74281CBED0600056127D /* libAFNetworking.a */,
-				1F0467F41CBEAE2000998E87 /* AsyncImageView */,
 				B4AA69AAC0D90AFDF92D50D0 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -178,6 +171,24 @@
 				04C661822A84B4777F024E51 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		E42007EA1CC187C30025F9F4 /* AsyncImageView */ = {
+			isa = PBXGroup;
+			children = (
+				E42007EB1CC187C30025F9F4 /* AsyncImageView */,
+			);
+			name = AsyncImageView;
+			path = ../../Documents/AsyncImageView;
+			sourceTree = "<group>";
+		};
+		E42007EB1CC187C30025F9F4 /* AsyncImageView */ = {
+			isa = PBXGroup;
+			children = (
+				E42007EC1CC187C30025F9F4 /* AsyncImageView.h */,
+				E42007ED1CC187C30025F9F4 /* AsyncImageView.m */,
+			);
+			path = AsyncImageView;
 			sourceTree = "<group>";
 		};
 		E4B548091CA9D397004EA764 = {
@@ -277,6 +288,8 @@
 				1FDCD7481CBEC7B700B99F19 /* SwipeViewController.m */,
 				1F336E761CB4638900F957AC /* TestViewController.h */,
 				1F336E771CB4638900F957AC /* TestViewController.m */,
+				E420085C1CC1894E0025F9F4 /* PhotoGalleryController.h */,
+				E420085D1CC1894E0025F9F4 /* PhotoGalleryController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -482,10 +495,11 @@
 				1F8F74351CBEEE200056127D /* OverlayView.m in Sources */,
 				1F8F74331CBEEE200056127D /* DraggableView.m in Sources */,
 				E4B5481A1CA9D398004EA764 /* AppDelegate.m in Sources */,
+				E420082E1CC187C30025F9F4 /* AsyncImageView.m in Sources */,
 				E4B548171CA9D398004EA764 /* main.m in Sources */,
-				1F0467F71CBEAE2000998E87 /* AsyncImageView.m in Sources */,
 				E4D591871CB6CCCA00649F80 /* MZApi.m in Sources */,
 				1F336E781CB4638900F957AC /* TestViewController.m in Sources */,
+				E420085E1CC1894E0025F9F4 /* PhotoGalleryController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,9 +637,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
-					/Users/$USER/Documents/FacebookSDK,
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Pods",
+					/Users/$USER/AsyncImageView,
 				);
 				INFOPLIST_FILE = RateMyFashion/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -643,9 +657,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
-					/Users/$USER/Documents/FacebookSDK,
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Pods",
+					/Users/$USER/AsyncImageView,
 				);
 				INFOPLIST_FILE = RateMyFashion/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
