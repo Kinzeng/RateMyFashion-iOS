@@ -10,8 +10,10 @@
 #import "MWPhotoBrowser.h"
 
 @interface PhotoGalleryController : UIViewController <MWPhotoBrowserDelegate>
+@property(strong, nonatomic) NSMutableArray * userPhotoList;
 
 - (NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser;
 - (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index;
+- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser thumbPhotoAtIndex:(NSUInteger)index;
 
 @end

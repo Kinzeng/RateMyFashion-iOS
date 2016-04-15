@@ -8,17 +8,34 @@
 
 #import "AppDelegate.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import "LoginViewController.h"
+#import "PhotoGalleryController.h"
+#import "SwipeViewController.h"
 
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
-
+@synthesize navController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
     // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    // Override point for customization after application launch.
+    
+    self.window.backgroundColor = [UIColor whiteColor];
+    
+    UIViewController *cont=[SwipeViewController alloc];
+    
+    self.navController=[[UINavigationController alloc]initWithRootViewController:cont];
+    [self.navController setNavigationBarHidden:TRUE];
+    
+    [self.window setRootViewController:navController];
+    
+    [self.window makeKeyAndVisible];
     return YES;
 }
 

@@ -9,5 +9,4 @@
 #import "MZPhoto.h"
 
 @implementation MZPhoto
-
 @end

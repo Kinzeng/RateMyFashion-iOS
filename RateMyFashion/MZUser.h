@@ -20,7 +20,7 @@
 
 + (void)setCurrentUser: (MZUser *) currentUser;
 + (void)clearCurrentUser;
-+(void)setPhotoList: (NSArray *) photosFromHTTP;
++ (void)setPhotoList: (NSArray *) photosFromHTTP;
 + (MZUser *)getCurrentUser;
 
 @end
