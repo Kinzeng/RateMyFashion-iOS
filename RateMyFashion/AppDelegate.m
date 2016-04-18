@@ -21,6 +21,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
+    SwipeViewController *swipe = [SwipeViewController alloc];
+    navController = [[UINavigationController alloc]initWithRootViewController:swipe];
+    self.window.rootViewController = navController;
+    //[self.window makeKeyAndVisible];
     return YES;
 }
 

@@ -9,11 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "DraggableViewBackground.h"
 #import "MZUser.h"
+#import "MWPhotoBrowser.h"
 
-
-@interface SwipeViewController : UIViewController <DraggableViewBackgroundDelegate>
-
+@interface SwipeViewController : UIViewController <DraggableViewBackgroundDelegate, MWPhotoBrowserDelegate>
+@property(strong, nonatomic) NSMutableArray * userPhotoList;
 - (void)menuPressed;
-- (void) segueToPhotoGallery;
+-(void)showPhotoBrowser;
+-(NSUInteger) numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser;
+-(id <MWPhoto>) photoBrowser:(MWPhotoBrowser *)photoBrowser thumbPhotoAtIndex:(NSUInteger)index;
+- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index;
+
 
 @end

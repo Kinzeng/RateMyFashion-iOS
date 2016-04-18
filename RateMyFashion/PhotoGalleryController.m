@@ -33,7 +33,7 @@
             browser.displaySelectionButtons = NO; // Whether selection buttons are shown on each image (defaults to NO)
             browser.enableGrid = YES; // Whether to allow the viewing of all the photo thumbnails on a grid (defaults to YES)
             browser.startOnGrid = YES; // Whether to start on the grid of thumbnails instead of the first photo (defaults to NO
-    
+            
             [self.view addSubview:browser.view];
             
         }
