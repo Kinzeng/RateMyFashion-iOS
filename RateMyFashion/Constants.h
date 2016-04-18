@@ -14,5 +14,6 @@ extern NSString * const like_photo_url;
 extern NSString * const dislike_photo_url;
 extern NSString * const load_own_photos_url;
 extern NSString * const delete_photo_url;
+extern NSString * const upload_photo_url;
 
 @end

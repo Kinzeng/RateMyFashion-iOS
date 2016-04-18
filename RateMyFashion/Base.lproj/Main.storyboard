@@ -29,21 +29,22 @@
                                 </connections>
                             </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="iKq-WJ-nQe">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" id="GE1-Bx-4mW">
-                                <rect key="frame" x="558" y="11" width="22" height="22"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="XIG-bI-rIH">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5lT-Ta-iKf">
+                                <rect key="frame" x="447" y="7" width="133" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Take Photo"/>
                                 <connections>
-                                    <action selector="photoGallery:" destination="QNS-9U-hlh" eventType="touchUpInside" id="hYK-4L-29d"/>
+                                    <action selector="openCamera:" destination="QNS-9U-hlh" eventType="touchUpInside" id="ve3-Rs-rqd"/>
                                 </connections>
                             </button>
                             <connections>
-                                <action selector="toCameraView:" destination="QNS-9U-hlh" id="HPH-nK-xKU"/>
+                                <action selector="openCamera:" destination="QNS-9U-hlh" id="zlh-MC-C8r"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="toCameraView" destination="iKq-WJ-nQe" id="rOm-Kw-gm5"/>
+                        <outlet property="openCamera" destination="XIG-bI-rIH" id="YR5-OE-gHA"/>
                         <outlet property="toPhotoGallery" destination="Sg9-QX-HRA" id="0s9-rB-ZXr"/>
                     </connections>
                 </viewController>

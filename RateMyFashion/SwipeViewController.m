@@ -14,16 +14,22 @@
 @end
 
 @implementation SwipeViewController
+
 - (IBAction)toPhotoGallery:(id)sender {
+    //Launch photo browser.
     [self showPhotoBrowser];
 }
-- (IBAction)toCameraView:(id)sender {
-    TestViewController *test = [TestViewController alloc];
-    [self.navigationController pushViewController:test animated:YES];
-
-    NSLog(@" To Camera!");
+- (IBAction)openCamera:(id)sender {
+    //Launch camera view controller.
+    NSLog(@"Camera opened");
+    UIImagePickerController *picker = [[UIImagePickerController alloc]init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    
+    [self presentViewController:picker animated:YES completion:NULL];
+    
 }
-
 
 
 - (void)viewDidLoad {
@@ -43,7 +49,7 @@
 }
 
 - (void)menuPressed {
-    //Temporarily, segue to photo gallery for now.
+    //Temporarily, segue to photo gallery for now using the menu button.
     NSLog(@"Menu Pressed");
     [self showPhotoBrowser];
     
@@ -51,6 +57,23 @@
 -(NSUInteger) numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser{
     return [self.userPhotoList count];
     
+}
+
+//Delegate methods for UIImagePickerDelegate
+
+-(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    //Upload the image, once the user has taken it. Do NOT save in phone photo gallery.
+    
+    
+    NSLog(@"Image taken!");
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    [MZApi uploadPhotoWithID:@"kai1234" andPhotoImage:chosenImage andCompletionHandler:^(MZPhoto *photo, NSError *error) {
+        NSLog(@"Photo Upload: %@", photo);
+    }];
+}
+-(void) imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    [picker dismissViewControllerAnimated:YES completion:NULL];
 }
 
 //delegate methods from MWPhotoBrowser.
