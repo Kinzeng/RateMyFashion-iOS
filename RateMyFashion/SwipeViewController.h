@@ -13,8 +13,9 @@
 
 @interface SwipeViewController : UIViewController <DraggableViewBackgroundDelegate, MWPhotoBrowserDelegate>
 @property(strong, nonatomic) NSMutableArray * userPhotoList;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *toCameraView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *toPhotoGallery;
 - (void)menuPressed;
--(void)showPhotoBrowser;
 -(NSUInteger) numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser;
 -(id <MWPhoto>) photoBrowser:(MWPhotoBrowser *)photoBrowser thumbPhotoAtIndex:(NSUInteger)index;
 - (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index;

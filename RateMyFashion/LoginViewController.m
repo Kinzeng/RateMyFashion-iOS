@@ -19,6 +19,7 @@
 @end
 
 @implementation LoginViewController
+@synthesize navController;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -52,6 +53,7 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
               error:(NSError *)error {
     [self fetchUserInfoWithCompletionHandler:^{
         NSLog(@"Logged in");
+        [self showUserInfo];
         [self segueToSwipe];
     }];
 }
@@ -66,38 +68,17 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
     //Test methods for API endpoints.
     NSLog(@"User %@", [[MZUser getCurrentUser] description]);
     NSLog(@"User Token %@", [[MZUser getCurrentUser] getUserToken]);
-//    Load Photos working
-//    [MZApi loadOwnPhotosWithId: @"1234" andNumOfPhotos:3 andCompletionHandler:^(NSArray *results) {
-//        if(results != nil){
-//            NSLog(@"%@", results);
-//        }
-//    }];
-    //Like Photo working. 
-//    [MZApi dislikePhotoWithPhotoID:1 andCompletionHandler:^(MZPhoto * photo) {
-//        NSLog(@"%@", photo);
-//    }];
-//    [MZApi loadOwnPhotoWithUserId:@"kai1234" andCompletionHandler:^(NSArray *ownPhotos) {
-//        NSLog(@" %@", ownPhotos);
-//    }];
-//    [MZApi deletePhotoWithId:1 andCompletionHandler:^(MZPhoto *deletedPhoto) {
-//        NSLog(@" %@", deletedPhoto);
-//    }];
-//    
-//    [MZApi loadOwnPhotosWithCompletionHandler:^(NSMutableArray *results) {
-//        if(results != nil){
-//            NSLog(@"Not null!");
-//        }
-//    }];
 }
 
-- (void)segueToTest {
-    TestViewController *controller = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"test"];
-    [self presentViewController:controller animated:YES completion:nil];
-}
+//- (void)segueToTest {
+//    TestViewController *controller = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"test"];
+//    [self presentViewController:controller animated:YES completion:nil];
+//}
 
 - (void)segueToSwipe {
     SwipeViewController *controller = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"swipe"];
-    [self presentViewController:controller animated:YES completion:nil];
+    navController = [[UINavigationController alloc]initWithRootViewController:controller];
+    [self presentViewController:navController animated:YES completion:nil];
 }
 
 - (void)fetchUserInfoWithCompletionHandler:(void (^)(void))segue {
@@ -111,7 +92,7 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
                      NSDictionary *jsonDict = (NSDictionary * )result;
                      MZUser *user = [[MZUser alloc] initWithJSON:jsonDict andAccessToken:[[FBSDKAccessToken currentAccessToken] tokenString]];
                      [MZUser setCurrentUser:user];
-                     segue();
+                     //segue();
                  }
              }
              else {

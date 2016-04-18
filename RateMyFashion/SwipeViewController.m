@@ -8,18 +8,30 @@
 
 #import "SwipeViewController.h"
 #import "DraggableViewBackground.h"
-
+#import "TestViewController.h"
 @interface SwipeViewController ()
 
 @end
 
 @implementation SwipeViewController
+- (IBAction)toPhotoGallery:(id)sender {
+    [self showPhotoBrowser];
+}
+- (IBAction)toCameraView:(id)sender {
+    TestViewController *test = [TestViewController alloc];
+    [self.navigationController pushViewController:test animated:YES];
+
+    NSLog(@" To Camera!");
+}
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     DraggableViewBackground *bg = [[DraggableViewBackground alloc] initWithFrame:self.view.frame];
     bg.delegate = self;
     [self.view addSubview:bg];
+    NSLog(@" %@", [MZUser description]);
     
     
     // Do any additional setup after loading the view.
