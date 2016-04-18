@@ -10,8 +10,10 @@
 #import "DraggableViewBackground.h"
 #import "MZUser.h"
 
+
 @interface SwipeViewController : UIViewController <DraggableViewBackgroundDelegate>
 
 - (void)menuPressed;
+- (void) segueToPhotoGallery;
 
 @end

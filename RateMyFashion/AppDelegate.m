@@ -21,23 +21,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
-    // Override point for customization after application launch.
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
-    // Override point for customization after application launch.
-    
-    self.window.backgroundColor = [UIColor whiteColor];
-    
-    UIViewController *login=[LoginViewController alloc];
-    UIViewController *swipe = [SwipeViewController alloc];
-    
-    self.navController=[[UINavigationController alloc]initWithRootViewController:login];
-    [self.navController setNavigationBarHidden:TRUE];
-    [self.navController pushViewController:swipe animated:TRUE];
-    
-    [self.window setRootViewController:navController];
-    
-    [self.window makeKeyAndVisible];
     return YES;
 }
 

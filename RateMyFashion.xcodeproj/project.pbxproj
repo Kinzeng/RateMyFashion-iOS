@@ -82,6 +82,7 @@
 		E42007ED1CC187C30025F9F4 /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
 		E420085C1CC1894E0025F9F4 /* PhotoGalleryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoGalleryController.h; sourceTree = "<group>"; };
 		E420085D1CC1894E0025F9F4 /* PhotoGalleryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoGalleryController.m; sourceTree = "<group>"; };
+		E420085F1CC48D100025F9F4 /* libNYTPhotoViewer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libNYTPhotoViewer.a; path = "../../Library/Developer/Xcode/DerivedData/RateMyFashion-bhbfrkibieirlpeyekeenbppfzqz/Build/Products/Debug-iphonesimulator/libNYTPhotoViewer.a"; sourceTree = "<group>"; };
 		E4B548121CA9D397004EA764 /* RateMyFashion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RateMyFashion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B548161CA9D398004EA764 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E4B548181CA9D398004EA764 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -139,6 +140,7 @@
 		1F336E6F1CB45F1900F957AC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E420085F1CC48D100025F9F4 /* libNYTPhotoViewer.a */,
 				E42007EA1CC187C30025F9F4 /* AsyncImageView */,
 				1F8F74361CBEEF010056127D /* libBolts.a */,
 				1F8F74371CBEEF010056127D /* libFBSDKCoreKit.a */,

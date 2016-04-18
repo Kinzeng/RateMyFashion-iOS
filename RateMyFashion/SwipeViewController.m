@@ -4,7 +4,7 @@
 //
 //  Created by Kevin on 4/7/16.
 //  Copyright © 2016 MouZhang. All rights reserved.
-//
+///Users/kaimou/Desktop/RateMyFashion-iOS/RateMyFashion/TestViewController.h
 
 #import "SwipeViewController.h"
 #import "DraggableViewBackground.h"
@@ -30,7 +30,14 @@
 }
 
 - (void)menuPressed {
-    NSLog([[MZUser getCurrentUser] description]);
+    //Temporarily, segue to photo gallery for now.
+    
+    //NSLog([[MZUser getCurrentUser] description]);
+    NSLog(@"Menu Pressed");
+    
+}
+-(void) segueToPhotoGallery{
+    
 }
 
 /*
