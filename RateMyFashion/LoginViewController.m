@@ -42,9 +42,9 @@
                  if([result isKindOfClass:[NSDictionary class]]) {
                      NSDictionary *jsonDict = (NSDictionary * )result;
                      
-                     [MZApi checkUserWithID:@"0" andCompletionHandler:^(NSString *userID, NSError *error) {
+                     [MZApi checkUserWithID:result[@"id"] andCompletionHandler:^(NSString *userID, NSError *error) {
                          if (error)
-                             NSLog([error description]);
+                             NSLog(@" %@", [error description]);
                          else {
                              MZUser *user = [[MZUser alloc] initWithJSON:jsonDict andUserId:userID];
                              [MZUser setCurrentUser:user];
@@ -106,16 +106,15 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
 - (void)fetchUserInfoWithCompletionHandler:(void (^)(void))segue {
     if([FBSDKAccessToken currentAccessToken]){
         
-        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me"
-                                           parameters:@{@"fields": @"id, name, link, first_name, last_name, email"}]
+        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me" parameters:@{@"fields": @"id, name, link, first_name, last_name, email"}]
          startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
              if (!error) {
                  if([result isKindOfClass:[NSDictionary class]]) {
                      NSDictionary *jsonDict = (NSDictionary * )result;
-                     
-                     [MZApi checkUserWithID:@"0" andCompletionHandler:^(NSString *userID, NSError *error) {
+                     NSLog(@"%@", jsonDict);
+                     [MZApi checkUserWithID:result[@"id"] andCompletionHandler:^(NSString *userID, NSError *error) {
                          if (error)
-                             NSLog([error description]);
+                             NSLog(@" %@", [error description]);
                          else {
                              MZUser *user = [[MZUser alloc] initWithJSON:jsonDict andUserId:userID];
                              [MZUser setCurrentUser:user];

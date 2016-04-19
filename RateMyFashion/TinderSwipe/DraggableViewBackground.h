@@ -35,11 +35,6 @@
 #import "MZUser.h"
 #import "MZApi.h"
 
-@protocol DraggableViewBackgroundDelegate <NSObject>
-
-- (void)menuPressed;
-
-@end
 
 @interface DraggableViewBackground : UIView <DraggableViewDelegate>
 
@@ -47,7 +42,7 @@
 - (void)cardSwipedLeft:(UIView *)card;
 - (void)cardSwipedRight:(UIView *)card;
 
-@property (weak) id <DraggableViewBackgroundDelegate> delegate;
+
 
 @property (strong, nonatomic)NSMutableArray *photoArray;
 @property (retain, nonatomic)NSArray *exampleCardLabels; //%%% the labels the cards

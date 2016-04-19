@@ -9,12 +9,11 @@
 #import "SwipeViewController.h"
 #import "DraggableViewBackground.h"
 #import "TestViewController.h"
-@interface SwipeViewController ()
 
-@end
+
 
 @implementation SwipeViewController
-
+@synthesize MWPhotoList;
 - (IBAction)toPhotoGallery:(id)sender {
     //Launch photo browser.
     [self showPhotoBrowser];
@@ -36,7 +35,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     DraggableViewBackground *bg = [[DraggableViewBackground alloc] initWithFrame:self.view.frame];
-    bg.delegate = self;
     [self.view addSubview:bg];
     NSLog(@"%@", [[MZUser getCurrentUser] description]);
     
@@ -48,13 +46,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)menuPressed {
-    //Temporarily, segue to photo gallery for now using the menu button.
-    NSLog(@"Menu Pressed");
-}
 
 -(NSUInteger) numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser{
-    return [self.userPhotoList count];
+    return [[[MZUser getCurrentUser] photoList] count];
     
 }
 
@@ -77,34 +71,31 @@
 //delegate methods from MWPhotoBrowser.
 - (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index{
     
-    if(index<self.userPhotoList.count){
-        return [self.userPhotoList objectAtIndex:index];
+    if(index<[[[MZUser getCurrentUser] photoList] count]){
+        
+        MZPhoto *photo = [[[MZUser getCurrentUser] photoList]objectAtIndex:index];
+        return [[MWPhoto alloc] initWithURL:[NSURL URLWithString:photo.file_url]];
     }
     return nil;
 }
 
 - (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser thumbPhotoAtIndex:(NSUInteger)index{
-    if(index<self.userPhotoList.count){
-        return [self.userPhotoList objectAtIndex:index];
+    if(index<[[[MZUser getCurrentUser] photoList] count]){
+        
+        MZPhoto *photo = [[[MZUser getCurrentUser] photoList]objectAtIndex:index];
+        return [[MWPhoto alloc] initWithURL:[NSURL URLWithString:photo.file_url]];
     }
+
     return nil;
 }
 //Load the photobrowser once the menu button is pressed.
 - (void)showPhotoBrowser{
-    //Swap out kai1234 with the actual user_id later.
-    [MZApi loadOwnPhotoWithUserID:[[MZUser getCurrentUser] getUserID]
-             andCompletionHandler:^(NSMutableArray *photos, NSError *error) {
+    [MZApi loadOwnPhotoWithUserID:[[MZUser getCurrentUser] getUserID ]andCompletionHandler:^(NSMutableArray *photos, NSError *error) {
         if(error) {
-            NSLog([error description]);
+            NSLog(@" %@",[error description]);
         }
         else {
-            NSLog(@"No error");
             [[MZUser getCurrentUser] setPhotoList:photos];
-            //Should currently be null because CurrentUser is not created yet.
-            for(int i = 0; i<photos.count; i++){
-                [self.userPhotoList addObject:[MWPhoto photoWithURL:[NSURL URLWithString:[[photos objectAtIndex:i]file_url]]]];
-            }
-            
             MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
             browser.enableGrid = YES; // Whether to allow the viewing of all the photo thumbnails on a grid (defaults to YES)
             browser.startOnGrid = YES; // Whether to start on the grid of thumbnails instead of the first photo (defaults to NO

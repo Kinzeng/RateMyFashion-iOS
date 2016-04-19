@@ -25,6 +25,12 @@
 //    }];
     
     // Do any additional setup after loading the view.
+    [MZApi loadOwnPhotoWithUserID:@"kai1234" andCompletionHandler:^(NSMutableArray *photos, NSError *error) {
+        if(!error){
+            NSLog(@" Test  %@", photos);
+        }
+        
+    }];
     
 }
 

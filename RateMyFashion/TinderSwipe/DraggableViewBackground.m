@@ -26,7 +26,6 @@ static float CARD_WIDTH;
 @synthesize exampleCardLabels; //%%% all the labels I'm using as example data at the moment
 @synthesize allCards;//%%% all the cards
 @synthesize photoArray;
-@synthesize delegate;
 
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -189,9 +188,6 @@ static float CARD_WIDTH;
     [dragView leftClickAction];
 }
 
-- (void)menuPressed {
-    [delegate menuPressed];
-}
 
 /*
  // Only override drawRect: if you perform custom drawing.
