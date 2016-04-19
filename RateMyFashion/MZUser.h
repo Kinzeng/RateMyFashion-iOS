@@ -14,7 +14,7 @@
 @property (strong, nonatomic)NSString *firstName;
 @property (strong, nonatomic)NSString *lastName;
 
-- (id)initWithJSON:(NSDictionary * )returnedJSON andAccessToken:(NSString *) accessToken;
+- (id)initWithJSON:(NSDictionary * )returnedJSON andUserId:(NSString *)userId;
 - (NSString *)getUserToken;
 
 + (void)setCurrentUser: (MZUser *) currentUser;

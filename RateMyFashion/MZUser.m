@@ -13,9 +13,9 @@ static MZUser *currentUser;
 @implementation MZUser
 
 
-- (id)initWithJSON:(NSDictionary * )returnedJSON andAccessToken:(NSString *) accessToken{
+- (id)initWithJSON:(NSDictionary * )returnedJSON andUserId:(NSString *)userId{
     if((self = [super init])){
-        self.userId = accessToken;
+        self.userId = userId;
         self.firstName = [returnedJSON objectForKey:@"first_name"];
         self.lastName = [returnedJSON objectForKey:@"last_name"];
     }

@@ -30,4 +30,7 @@
 + (void)deletePhotoWithID:(int)photoID
      andCompletionHandler:(void(^)(MZPhoto *photo, NSError *error))callback;
 
++ (void)checkUserWithID:(NSString *)userID
+     andCompletionHandler:(void(^)(NSString *userID, NSError *error))callback;
+
 @end

@@ -39,12 +39,15 @@ static float CARD_WIDTH;
         exampleCardLabels = [[NSArray alloc]initWithObjects:@"first", @"second", @"third", @"fourth", @"last", nil]; //%%% placeholder for card-specific information
         
         MZPhoto *photo = [[MZPhoto alloc] init];
-        photo.file_url = @"https://scontent.xx.fbcdn.net/v/t1.0-9/10559810_782711591760368_5184506463589103282_n.jpg?oh=7c7adb02fb54bd3c183ad01efadb7180&oe=5779FADD";
+        photo.file_url = @"http://localhost:3000/static/photos/0.jpg";
+        photo.user_id = 0;
+        photo.photo_id = 0;
         photoArray = [[NSMutableArray alloc] initWithObjects:photo, photo, photo, photo, photo, photo, photo, photo, photo, photo, photo, photo, nil];
         loadedCards = [[NSMutableArray alloc] init];
         allCards = [[NSMutableArray alloc] init];
         cardsLoadedIndex = 0;
         
+//        [MZApi loadOwnPhotoWithUserID: andCompletionHandler:<#^(NSArray *user, NSError *error)callback#>];
         //TODO: HTTP request to load X photos (10 or so)
         [self loadCards]; //put this in a callback
     }

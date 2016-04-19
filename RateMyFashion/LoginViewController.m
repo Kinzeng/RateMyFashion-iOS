@@ -31,12 +31,27 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    //check if the user is already logged in
-    if ([FBSDKAccessToken currentAccessToken])
-        [self segueToSwipe];
-}
- 
+//- (void)viewDidAppear:(BOOL)animated {
+//    //check if the user is already logged in
+//    if ([FBSDKAccessToken currentAccessToken]) {
+//        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me"
+//                                           parameters:@{@"fields": @"id, name, link, first_name, last_name, email"}]
+//         startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+//             if (!error) {
+//                 if([result isKindOfClass:[NSDictionary class]]) {
+//                     NSDictionary *jsonDict = (NSDictionary * )result;
+//                     MZUser *user = [[MZUser alloc] initWithJSON:jsonDict andUserId:jsonDict[@"id"]];
+//                     [MZUser setCurrentUser:user];
+//                 }
+//             }
+//             else {
+//                 NSLog(@"There was an error %@", error);
+//             }
+//         }];
+//        [self segueToSwipe];
+//    }
+//}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -66,28 +81,6 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
     //Test methods for API endpoints.
     NSLog(@"User %@", [[MZUser getCurrentUser] description]);
     NSLog(@"User Token %@", [[MZUser getCurrentUser] getUserToken]);
-//    Load Photos working
-//    [MZApi loadOwnPhotosWithId: @"1234" andNumOfPhotos:3 andCompletionHandler:^(NSArray *results) {
-//        if(results != nil){
-//            NSLog(@"%@", results);
-//        }
-//    }];
-    //Like Photo working. 
-//    [MZApi dislikePhotoWithPhotoID:1 andCompletionHandler:^(MZPhoto * photo) {
-//        NSLog(@"%@", photo);
-//    }];
-//    [MZApi loadOwnPhotoWithUserId:@"kai1234" andCompletionHandler:^(NSArray *ownPhotos) {
-//        NSLog(@" %@", ownPhotos);
-//    }];
-//    [MZApi deletePhotoWithId:1 andCompletionHandler:^(MZPhoto *deletedPhoto) {
-//        NSLog(@" %@", deletedPhoto);
-//    }];
-//    
-//    [MZApi loadOwnPhotosWithCompletionHandler:^(NSMutableArray *results) {
-//        if(results != nil){
-//            NSLog(@"Not null!");
-//        }
-//    }];
 }
 
 - (void)segueToTest {
@@ -109,9 +102,16 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
              if (!error) {
                  if([result isKindOfClass:[NSDictionary class]]) {
                      NSDictionary *jsonDict = (NSDictionary * )result;
-                     MZUser *user = [[MZUser alloc] initWithJSON:jsonDict andAccessToken:[[FBSDKAccessToken currentAccessToken] tokenString]];
-                     [MZUser setCurrentUser:user];
-                     segue();
+                     
+                     [MZApi checkUserWithID:@"0" andCompletionHandler:^(NSString *userID, NSError *error) {
+                         if (error)
+                             NSLog([error description]);
+                         else {
+                             MZUser *user = [[MZUser alloc] initWithJSON:jsonDict andUserId:userID];
+                             [MZUser setCurrentUser:user];
+                             segue();
+                         }
+                     }];
                  }
              }
              else {
