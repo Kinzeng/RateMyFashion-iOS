@@ -92,7 +92,7 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
                      NSDictionary *jsonDict = (NSDictionary * )result;
                      MZUser *user = [[MZUser alloc] initWithJSON:jsonDict andAccessToken:[[FBSDKAccessToken currentAccessToken] tokenString]];
                      [MZUser setCurrentUser:user];
-                     //segue();
+                     segue();
                  }
              }
              else {

@@ -132,31 +132,20 @@
 }
 
 +(void) uploadPhotoWithID:(NSString *)ownerID andPhotoImage:(UIImage *)image andCompletionHandler:(void (^)(MZPhoto *, NSError *))callback{
-    NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
+    
+    NSData *imageData = UIImageJPEGRepresentation(image, 1);
     NSDictionary *parameters = @{@"owner_id": ownerID};
     
-    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:upload_photo_url parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-        [formData appendPartWithFormData:imageData name:@"photo"];
-    } error:nil];
-    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-    
-    NSURLSessionUploadTask *uploadTask;
-    
-    uploadTask = [manager uploadTaskWithStreamedRequest:request progress:nil completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-        if(error){
-            NSLog(@"File Upload Failed");
-            
-        }
-        else{
-            NSLog(@" %@", responseObject);
-            MZPhoto *photo = [[MZPhoto alloc] initWithDictionary:responseObject error:nil];
-            callback(photo, nil);
-        }
-    }];
-    
-    
-    
-    
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:upload_photo_url]];
+    [manager POST:upload_photo_url parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        [formData appendPartWithFileData:imageData name:@"photo" fileName:@"photo.jpg" mimeType:@"image/jpeg"];
+    } progress:nil
+          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+              NSLog(@" %@", responseObject);
+              
+          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+              NSLog(@" Failed");
+          }];
 }
 
 @end

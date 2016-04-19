@@ -65,11 +65,9 @@
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
     //Upload the image, once the user has taken it. Do NOT save in phone photo gallery.
     
-    
-    NSLog(@"Image taken!");
     [picker dismissViewControllerAnimated:YES completion:NULL];
-    [MZApi uploadPhotoWithID:@"kai1234" andPhotoImage:chosenImage andCompletionHandler:^(MZPhoto *photo, NSError *error) {
-        NSLog(@"Photo Upload: %@", photo);
+    [MZApi uploadPhotoWithID:[[MZUser getCurrentUser] getUserToken] andPhotoImage:chosenImage andCompletionHandler:^(MZPhoto *photo, NSError *error) {
+        NSLog(@"Photo Uploaded!");
     }];
 }
 -(void) imagePickerControllerDidCancel:(UIImagePickerController *)picker{
@@ -93,11 +91,11 @@
 //Load the photobrowser once the menu button is pressed.
 -(void) showPhotoBrowser{
     self.userPhotoList = [NSMutableArray array];
+    //Swap out kai1234 with the actual user_id later. 
     [MZApi loadOwnPhotoWithUserID:@"kai1234" andCompletionHandler:^(NSMutableArray *photos, NSError *error) {
         if(photos!=nil){
             //self.userPhotoList = photos;
             [[MZUser getCurrentUser]setPhotoList:self.userPhotoList];
-            //NSLog(@" %@", self.userPhotoList);
             //Should currently be null because CurrentUser is not created yet.
             for(int i = 0; i<photos.count; i++){
                 [self.userPhotoList addObject:[MWPhoto photoWithURL:[NSURL URLWithString:[[photos objectAtIndex:i]file_url]]]];

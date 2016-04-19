@@ -12,6 +12,7 @@
 #import "MWPhotoBrowser.h"
 
 @interface SwipeViewController : UIViewController <DraggableViewBackgroundDelegate, MWPhotoBrowserDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
 @property(strong, nonatomic) NSMutableArray * userPhotoList;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *toPhotoGallery;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *openCamera;

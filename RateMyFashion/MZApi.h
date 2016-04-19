@@ -29,7 +29,8 @@
 
 + (void)deletePhotoWithID:(int)photoID
      andCompletionHandler:(void(^)(MZPhoto *photo, NSError *error))callback;
-+(void) uploadPhotoWithID:(NSString* ) ownerID andPhotoImage: (UIImage* ) image 
+
++ (void) uploadPhotoWithID:(NSString* ) ownerID andPhotoImage: (UIImage* ) image
     andCompletionHandler:(void(^)(MZPhoto *photo, NSError *error))callback;
 
 @end

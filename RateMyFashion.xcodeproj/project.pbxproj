@@ -22,7 +22,6 @@
 		1FDCD7491CBEC7B700B99F19 /* SwipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDCD7481CBEC7B700B99F19 /* SwipeViewController.m */; };
 		E40A7B491CB4D59000D54F93 /* MZPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = E40A7B481CB4D59000D54F93 /* MZPhoto.m */; };
 		E420082E1CC187C30025F9F4 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E42007ED1CC187C30025F9F4 /* AsyncImageView.m */; };
-		E420085E1CC1894E0025F9F4 /* PhotoGalleryController.m in Sources */ = {isa = PBXBuildFile; fileRef = E420085D1CC1894E0025F9F4 /* PhotoGalleryController.m */; };
 		E4B548171CA9D398004EA764 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E4B548161CA9D398004EA764 /* main.m */; };
 		E4B5481A1CA9D398004EA764 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E4B548191CA9D398004EA764 /* AppDelegate.m */; };
 		E4B5481D1CA9D398004EA764 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4B5481C1CA9D398004EA764 /* LoginViewController.m */; };
@@ -80,8 +79,6 @@
 		E40A7B481CB4D59000D54F93 /* MZPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZPhoto.m; sourceTree = "<group>"; };
 		E42007EC1CC187C30025F9F4 /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageView.h; sourceTree = "<group>"; };
 		E42007ED1CC187C30025F9F4 /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
-		E420085C1CC1894E0025F9F4 /* PhotoGalleryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoGalleryController.h; sourceTree = "<group>"; };
-		E420085D1CC1894E0025F9F4 /* PhotoGalleryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoGalleryController.m; sourceTree = "<group>"; };
 		E420085F1CC48D100025F9F4 /* libNYTPhotoViewer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libNYTPhotoViewer.a; path = "../../Library/Developer/Xcode/DerivedData/RateMyFashion-bhbfrkibieirlpeyekeenbppfzqz/Build/Products/Debug-iphonesimulator/libNYTPhotoViewer.a"; sourceTree = "<group>"; };
 		E4B548121CA9D397004EA764 /* RateMyFashion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RateMyFashion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B548161CA9D398004EA764 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -290,8 +287,6 @@
 				1FDCD7481CBEC7B700B99F19 /* SwipeViewController.m */,
 				1F336E761CB4638900F957AC /* TestViewController.h */,
 				1F336E771CB4638900F957AC /* TestViewController.m */,
-				E420085C1CC1894E0025F9F4 /* PhotoGalleryController.h */,
-				E420085D1CC1894E0025F9F4 /* PhotoGalleryController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -501,7 +496,6 @@
 				E4B548171CA9D398004EA764 /* main.m in Sources */,
 				E4D591871CB6CCCA00649F80 /* MZApi.m in Sources */,
 				1F336E781CB4638900F957AC /* TestViewController.m in Sources */,
-				E420085E1CC1894E0025F9F4 /* PhotoGalleryController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
