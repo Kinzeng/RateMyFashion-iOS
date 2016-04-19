@@ -8,17 +8,23 @@
 
 #import "AppDelegate.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import "LoginViewController.h"
+#import "PhotoGalleryController.h"
+#import "SwipeViewController.h"
 
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
-
+@synthesize navController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
-    // Override point for customization after application launch.
+//    SwipeViewController *swipe = [SwipeViewController alloc];
+//    navController = [[UINavigationController alloc]initWithRootViewController:swipe];
+//    self.window.rootViewController = navController;
+    //[self.window makeKeyAndVisible];
     return YES;
 }
 

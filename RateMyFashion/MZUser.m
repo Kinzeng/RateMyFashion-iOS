@@ -11,11 +11,12 @@
 static MZUser *currentUser;
 
 @implementation MZUser
+@synthesize photoList;
 
 
 - (id)initWithJSON:(NSDictionary * )returnedJSON andUserId:(NSString *)userId{
     if((self = [super init])){
-        self.userId = userId;
+        self.userID = userId;
         self.firstName = [returnedJSON objectForKey:@"first_name"];
         self.lastName = [returnedJSON objectForKey:@"last_name"];
     }
@@ -35,12 +36,16 @@ static MZUser *currentUser;
     return currentUser;
 }
 
-- (NSString *) getUserToken{
-    return currentUser.userId;
++ (void)setPhotoList:(NSArray *)photosFromHTTP{
+    self.photoList = photosFromHTTP;
+}
+
+- (NSString *) getUserID{
+    return currentUser.userID;
 }
 
 - (NSString *) description{
-    return [NSString stringWithFormat:@"User: FirstName=%@, LastName=%@", currentUser.firstName, currentUser.lastName];
+    return [NSString stringWithFormat:@"User: First Name = %@, Last Name = %@ UserID = %@", currentUser.firstName, currentUser.lastName, currentUser.userID];
 }
 
 @end

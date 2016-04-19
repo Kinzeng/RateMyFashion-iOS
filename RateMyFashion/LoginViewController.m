@@ -19,6 +19,7 @@
 @end
 
 @implementation LoginViewController
+@synthesize navController;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -31,26 +32,33 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
-//- (void)viewDidAppear:(BOOL)animated {
-//    //check if the user is already logged in
-//    if ([FBSDKAccessToken currentAccessToken]) {
-//        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me"
-//                                           parameters:@{@"fields": @"id, name, link, first_name, last_name, email"}]
-//         startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
-//             if (!error) {
-//                 if([result isKindOfClass:[NSDictionary class]]) {
-//                     NSDictionary *jsonDict = (NSDictionary * )result;
-//                     MZUser *user = [[MZUser alloc] initWithJSON:jsonDict andUserId:jsonDict[@"id"]];
-//                     [MZUser setCurrentUser:user];
-//                 }
-//             }
-//             else {
-//                 NSLog(@"There was an error %@", error);
-//             }
-//         }];
-//        [self segueToSwipe];
-//    }
-//}
+- (void)viewDidAppear:(BOOL)animated {
+    //check if the user is already logged in
+    if ([FBSDKAccessToken currentAccessToken]) {
+        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me"
+                                           parameters:@{@"fields": @"id, name, link, first_name, last_name, email"}]
+         startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+             if (!error) {
+                 if([result isKindOfClass:[NSDictionary class]]) {
+                     NSDictionary *jsonDict = (NSDictionary * )result;
+                     
+                     [MZApi checkUserWithID:@"0" andCompletionHandler:^(NSString *userID, NSError *error) {
+                         if (error)
+                             NSLog([error description]);
+                         else {
+                             MZUser *user = [[MZUser alloc] initWithJSON:jsonDict andUserId:userID];
+                             [MZUser setCurrentUser:user];
+                             [self segueToSwipe];
+                         }
+                     }];
+                 }
+             }
+             else {
+                 NSLog(@"There was an error %@", error);
+             }
+         }];
+    }
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -67,6 +75,7 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
               error:(NSError *)error {
     [self fetchUserInfoWithCompletionHandler:^{
         NSLog(@"Logged in");
+        [self showUserInfo];
         [self segueToSwipe];
     }];
 }
@@ -80,17 +89,18 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
 -(void) showUserInfo {
     //Test methods for API endpoints.
     NSLog(@"User %@", [[MZUser getCurrentUser] description]);
-    NSLog(@"User Token %@", [[MZUser getCurrentUser] getUserToken]);
+    NSLog(@"User Token %@", [[MZUser getCurrentUser] getUserID]);
 }
 
-- (void)segueToTest {
-    TestViewController *controller = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"test"];
-    [self presentViewController:controller animated:YES completion:nil];
-}
+//- (void)segueToTest {
+//    TestViewController *controller = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"test"];
+//    [self presentViewController:controller animated:YES completion:nil];
+//}
 
 - (void)segueToSwipe {
     SwipeViewController *controller = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"swipe"];
-    [self presentViewController:controller animated:YES completion:nil];
+    navController = [[UINavigationController alloc]initWithRootViewController:controller];
+    [self presentViewController:navController animated:YES completion:nil];
 }
 
 - (void)fetchUserInfoWithCompletionHandler:(void (^)(void))segue {

@@ -9,10 +9,11 @@
 
 @interface Constants : NSObject
 extern NSString * const base_url;
-extern NSString * const load_photo_url;
+extern NSString * const load_photos_url;
 extern NSString * const like_photo_url;
 extern NSString * const dislike_photo_url;
 extern NSString * const load_own_photos_url;
 extern NSString * const delete_photo_url;
 extern NSString * const check_user_url;
+extern NSString * const upload_photo_url;
 @end

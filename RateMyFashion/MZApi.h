@@ -14,7 +14,7 @@
 
 @interface MZApi : NSObject
 
-+ (void)loadPhotosWithID:(NSString *)userID
++ (void)loadRandomPhotosWithID:(NSString *)userID
           andNumOfPhotos:(int)numOfPhotos
     andCompletionHandler:(void (^)(NSArray *results, NSError *error))callback;
 
@@ -25,12 +25,15 @@
            andCompletionHandler:(void(^)(MZPhoto *photo, NSError *error))callback;
 
 + (void)loadOwnPhotoWithUserID:(NSString * )userID
-          andCompletionHandler:(void(^)(NSArray *user, NSError *error))callback;
+          andCompletionHandler:(void(^)(NSMutableArray *user, NSError *error))callback;
 
 + (void)deletePhotoWithID:(int)photoID
      andCompletionHandler:(void(^)(MZPhoto *photo, NSError *error))callback;
 
 + (void)checkUserWithID:(NSString *)userID
      andCompletionHandler:(void(^)(NSString *userID, NSError *error))callback;
+
++ (void)uploadPhotoWithID:(NSString* ) ownerID andPhotoImage: (UIImage* ) image
+    andCompletionHandler:(void(^)(MZPhoto *photo, NSError *error))callback;
 
 @end

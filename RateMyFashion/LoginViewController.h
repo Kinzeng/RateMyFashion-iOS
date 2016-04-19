@@ -15,6 +15,8 @@
 
 @property (strong, nonatomic) FBSDKLoginButton *loginButton;
 @property (strong, nonatomic) MZUser *user;
+@property (nonatomic, retain) UINavigationController *navController;
+
 
 @end
 

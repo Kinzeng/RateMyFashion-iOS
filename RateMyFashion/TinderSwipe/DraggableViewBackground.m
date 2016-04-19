@@ -58,16 +58,16 @@ static float CARD_WIDTH;
 - (void)setupView {
     self.backgroundColor = [UIColor colorWithRed:.92 green:.93 blue:.95 alpha:1]; //the gray background colors
     
-    int menuWidth = 22;
-    int menuHeight = 15;
-    menuButton = [[UIButton alloc]initWithFrame:CGRectMake(17, 34, menuWidth, menuHeight)];
-    [menuButton setImage:[UIImage imageNamed:@"menuButton"] forState:UIControlStateNormal];
-    [menuButton addTarget:self action:@selector(menuPressed) forControlEvents:UIControlEventTouchUpInside];
-    
-    int messageWidth = 18;
-    int messageHeight = 18;
-    messageButton = [[UIButton alloc]initWithFrame:CGRectMake(self.frame.size.width - (17 + messageWidth), 34, messageWidth, messageHeight)];
-    [messageButton setImage:[UIImage imageNamed:@"messageButton"] forState:UIControlStateNormal];
+//    int menuWidth = 22;
+//    int menuHeight = 15;
+//    menuButton = [[UIButton alloc]initWithFrame:CGRectMake(17, 34, menuWidth, menuHeight)];
+//    [menuButton setImage:[UIImage imageNamed:@"menuButton"] forState:UIControlStateNormal];
+//    [menuButton addTarget:self action:@selector(menuPressed) forControlEvents:UIControlEventTouchUpInside];
+//    
+//    int messageWidth = 18;
+//    int messageHeight = 18;
+//    messageButton = [[UIButton alloc]initWithFrame:CGRectMake(self.frame.size.width - (17 + messageWidth), 34, messageWidth, messageHeight)];
+//    [messageButton setImage:[UIImage imageNamed:@"messageButton"] forState:UIControlStateNormal];
     
     xButton = [[UIButton alloc]initWithFrame:CGRectMake((self.frame.size.width / 2) - 100, self.frame.size.height - 125, 60, 60)];
     [xButton setImage:[UIImage imageNamed:@"xButton"] forState:UIControlStateNormal];

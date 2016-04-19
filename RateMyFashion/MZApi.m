@@ -10,29 +10,32 @@
 
 @implementation MZApi
 
-+ (void)loadPhotosWithID:(NSString *)userID
-          andNumOfPhotos:(int)numOfPhotos
-    andCompletionHandler:(void (^)(NSArray *results, NSError *error))callback {
++ (void)loadRandomPhotosWithID:(NSString *)userID
+                andNumOfPhotos:(int)numOfPhotos
+          andCompletionHandler:(void (^)(NSArray *results, NSError *error))callback {
     
     NSDictionary *parameters = @{@"user_id": userID, @"num" : [@(numOfPhotos) stringValue]};
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager GET:load_photo_url
+    [manager GET:load_photos_url
       parameters:parameters
         progress:nil
-         success:^(NSURLSessionDataTask *task, id  responseObject) {
-             NSArray *items = responseObject;
-             NSMutableArray *returnedPhotos = [NSMutableArray new];
-             [items enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                 NSError *error = nil;
-                 MZPhoto *photo = [[MZPhoto alloc] initWithDictionary:obj error:&error];
-                 [returnedPhotos addObject:photo];
-             }];
-             
-             if (responseObject[@"error"])
+         success:^(NSURLSessionDataTask *task, id responseObject) {
+             if (responseObject[@"error"]) {
+                 NSLog(@"HTTP error in load random");
                  callback(nil, [NSError errorWithDomain:responseObject[@"message"] code:[responseObject[@"error"] integerValue] userInfo:NULL]);
-             else
+             }
+             else {
+                 NSLog(@"load random");
+                 NSArray *items = responseObject;
+                 NSMutableArray *returnedPhotos = [NSMutableArray new];
+                 [items enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                     NSError *error = nil;
+                     MZPhoto *photo = [[MZPhoto alloc] initWithDictionary:obj error:&error];
+                     [returnedPhotos addObject:photo];
+                 }];
                  callback(returnedPhotos, nil);
+             }
          }
          failure:^(NSURLSessionDataTask *operation, NSError *error) {
              NSLog(@"Failed");
@@ -88,7 +91,7 @@
 }
 
 + (void)loadOwnPhotoWithUserID:(NSString *)userID
-          andCompletionHandler:(void(^)(NSArray *photos, NSError *error))callback {
+          andCompletionHandler:(void(^)(NSMutableArray *photos, NSError *error))callback {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
     NSDictionary *parameters = @{@"user_id": userID};
@@ -97,16 +100,21 @@
       parameters:parameters
         progress:nil
          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-             NSArray *items = responseObject;
-             NSMutableArray *returnedPhotos = [NSMutableArray new];
-             [items enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                 NSError *error = nil;
-                 MZPhoto *photo = [[MZPhoto alloc]initWithDictionary:obj error:&error];
-                 [returnedPhotos addObject:photo];
-             }];
-             
-             //TODO: handle error
-             callback(returnedPhotos, nil);
+             if (responseObject[@"error"]) {
+                 NSLog(@"HTTP error in load random");
+                 callback(nil, [NSError errorWithDomain:responseObject[@"message"] code:[responseObject[@"error"] integerValue] userInfo:NULL]);
+             }
+             else {
+                 NSLog(@"load random");
+                 NSArray *items = responseObject;
+                 NSMutableArray *returnedPhotos = [NSMutableArray new];
+                 [items enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                     NSError *error = nil;
+                     MZPhoto *photo = [[MZPhoto alloc] initWithDictionary:obj error:&error];
+                     [returnedPhotos addObject:photo];
+                 }];
+                 callback(returnedPhotos, nil);
+             }
          }
          failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
              NSLog(@"Photo dislike Failed");
@@ -155,5 +163,27 @@
              NSLog(@"Check User Failed");
          }];
 }
+
++ (void)uploadPhotoWithID:(NSString *)ownerID andPhotoImage:(UIImage *)image andCompletionHandler:(void (^)(MZPhoto *, NSError *))callback{
+    
+    NSData *imageData = UIImageJPEGRepresentation(image, 1);
+    NSDictionary *parameters = @{@"owner_id": ownerID};
+    
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:upload_photo_url]];
+    [manager POST:upload_photo_url
+       parameters:parameters
+constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+    [formData appendPartWithFileData:imageData name:@"photo" fileName:@"photo.jpg" mimeType:@"image/jpeg"];
+}
+         progress:nil
+          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+              NSLog(@"%@", responseObject);
+              
+          }
+          failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+              NSLog(@"Failed");
+          }];
+}
+
 
 @end
