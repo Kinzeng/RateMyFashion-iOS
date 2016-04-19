@@ -126,7 +126,10 @@
               NSError *err = nil;
               MZPhoto *photo = [[MZPhoto alloc] initWithDictionary:responseObject error:&err];
               
-              callback(photo, nil);
+              if (responseObject[@"error"])
+                  callback(nil, [NSError errorWithDomain:responseObject[@"message"] code:[responseObject[@"error"] integerValue] userInfo:NULL]);
+              else
+                  callback(photo, nil);
           }
           failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
               NSLog(@"Photo delete Failed");
@@ -140,17 +143,17 @@
     NSDictionary *parameters = @{@"user_id":userID};
     
     [manager GET:check_user_url
-       parameters:parameters
-         progress:nil
-          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-              if (responseObject[@"error"])
-                  callback(nil, [NSError errorWithDomain:responseObject[@"message"] code:[responseObject[@"error"] integerValue] userInfo:NULL]);
-              else
-                  callback(responseObject[@"user_id"], nil);
-          }
-          failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-              NSLog(@"Check User Failed");
-          }];
+      parameters:parameters
+        progress:nil
+         success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+             if (responseObject[@"error"])
+                 callback(nil, [NSError errorWithDomain:responseObject[@"message"] code:[responseObject[@"error"] integerValue] userInfo:NULL]);
+             else
+                 callback(responseObject[@"user_id"], nil);
+         }
+         failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+             NSLog(@"Check User Failed");
+         }];
 }
 
 @end
