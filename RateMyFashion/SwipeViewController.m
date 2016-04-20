@@ -9,6 +9,7 @@
 #import "SwipeViewController.h"
 #import "DraggableViewBackground.h"
 #import "TestViewController.h"
+#import "CustomPhotoCaptionView.h"
 
 
 
@@ -80,11 +81,15 @@
 
 - (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser thumbPhotoAtIndex:(NSUInteger)index{
     if(index<[[[MZUser getCurrentUser] photoList] count]){
-        
         return [[[MZUser getCurrentUser] photoList]objectAtIndex:index];
     }
 
     return nil;
+}
+-(MWCaptionView *) photoBrowser:(MWPhotoBrowser *)photoBrowser captionViewForPhotoAtIndex:(NSUInteger)index{
+    MZPhoto *photo = [[[MZUser getCurrentUser] photoList]objectAtIndex:index];
+    MWCaptionView *captionView = [[MWCaptionView alloc] initWithPhoto:photo];
+    return captionView;
 }
 //Load the photobrowser once the menu button is pressed.
 - (void)showPhotoBrowser{
