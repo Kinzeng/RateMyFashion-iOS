@@ -30,8 +30,7 @@
                  NSArray *items = (NSArray*)responseObject;
                  NSMutableArray *returnedPhotos = [NSMutableArray new];
                  [items enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                     NSError *error = nil;
-                     MZPhoto *photo = [[MZPhoto alloc] initWithDictionary:obj error:&error];
+                     MZPhoto *photo = [[MZPhoto alloc] initWithJSON:obj];
                      [returnedPhotos addObject:photo];
                  }];
                  callback(returnedPhotos, nil);
@@ -53,11 +52,10 @@
          progress:nil
           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
               NSLog(@"Response: %@", responseObject);
-              NSError *err = nil;
               if (responseObject[@"error"])
                   callback(nil, [NSError errorWithDomain:responseObject[@"message"] code:[responseObject[@"error"] integerValue] userInfo:NULL]);
               else {
-                  MZPhoto *photo = [[MZPhoto alloc] initWithDictionary:responseObject error:&err];
+                  MZPhoto *photo = [[MZPhoto alloc] initWithJSON:responseObject];
                   callback(photo, nil);
               }
           }
@@ -77,11 +75,10 @@
          progress:nil
           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
               NSLog(@"Response: %@", responseObject);
-              NSError *err = nil;
               if (responseObject[@"error"])
                   callback(nil, [NSError errorWithDomain:responseObject[@"message"] code:[responseObject[@"error"] integerValue] userInfo:NULL]);
               else {
-                  MZPhoto *photo = [[MZPhoto alloc] initWithDictionary:responseObject error:&err];
+                  MZPhoto *photo = [[MZPhoto alloc] initWithJSON:responseObject];
                   callback(photo, nil);
               }
           }
@@ -107,10 +104,9 @@
              else{
                  NSMutableArray *returnedPhotos = [NSMutableArray new];
                  NSArray *photos = (NSArray *) responseObject;
-                 NSError *error = nil;
                  for(id obj in photos){
                      
-                     MZPhoto *photo = [[MZPhoto alloc] initWithDictionary:obj error:&error];
+                     MZPhoto *photo = [[MZPhoto alloc] initWithJSON:obj];
                      [returnedPhotos addObject:photo];
                  }
                  
@@ -133,8 +129,7 @@
        parameters:parameters
          progress:nil
           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-              NSError *err = nil;
-              MZPhoto *photo = [[MZPhoto alloc] initWithDictionary:responseObject error:&err];
+              MZPhoto *photo = [[MZPhoto alloc] initWithJSON:responseObject];
               
               if (responseObject[@"error"])
                   callback(nil, [NSError errorWithDomain:responseObject[@"message"] code:[responseObject[@"error"] integerValue] userInfo:NULL]);

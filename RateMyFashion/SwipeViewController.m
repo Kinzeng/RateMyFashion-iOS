@@ -73,8 +73,7 @@
     
     if(index<[[[MZUser getCurrentUser] photoList] count]){
         
-        MZPhoto *photo = [[[MZUser getCurrentUser] photoList]objectAtIndex:index];
-        return [[MWPhoto alloc] initWithURL:[NSURL URLWithString:photo.file_url]];
+        return [[[MZUser getCurrentUser] photoList]objectAtIndex:index];
     }
     return nil;
 }
@@ -82,8 +81,7 @@
 - (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser thumbPhotoAtIndex:(NSUInteger)index{
     if(index<[[[MZUser getCurrentUser] photoList] count]){
         
-        MZPhoto *photo = [[[MZUser getCurrentUser] photoList]objectAtIndex:index];
-        return [[MWPhoto alloc] initWithURL:[NSURL URLWithString:photo.file_url]];
+        return [[[MZUser getCurrentUser] photoList]objectAtIndex:index];
     }
 
     return nil;

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface MZUser : NSObject
 
 @property (strong, nonatomic)NSString *userID;
