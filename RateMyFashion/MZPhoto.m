@@ -9,6 +9,11 @@
 #import "MZPhoto.h"
 
 @implementation MZPhoto
+@synthesize photo_id;
+@synthesize file_url;
+@synthesize likes;
+@synthesize dislikes;
+@synthesize user_id;
 
 -(id)initWithJSON:(NSDictionary *) returnedJSON{
     if(self = [self initWithURL:[NSURL URLWithString:[returnedJSON objectForKey:@"file_url"]]]){
