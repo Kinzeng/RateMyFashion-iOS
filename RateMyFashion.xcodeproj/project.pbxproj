@@ -38,6 +38,8 @@
 		E4B54A111CAA2686004EA764 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4B54A101CAA2686004EA764 /* LaunchScreen.storyboard */; };
 		E4B54A171CAA2A8F004EA764 /* MZUser.m in Sources */ = {isa = PBXBuildFile; fileRef = E4B54A161CAA2A8F004EA764 /* MZUser.m */; };
 		E4D591871CB6CCCA00649F80 /* MZApi.m in Sources */ = {isa = PBXBuildFile; fileRef = E4D591861CB6CCCA00649F80 /* MZApi.m */; };
+		E4FE75441CC9E3B700B66D68 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4FE75431CC9E3B700B66D68 /* SWRevealViewController.m */; };
+		E4FE75491CC9EB9600B66D68 /* SideBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4FE75481CC9EB9600B66D68 /* SideBarViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +112,10 @@
 		E4B54A161CAA2A8F004EA764 /* MZUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZUser.m; sourceTree = "<group>"; };
 		E4D591851CB6CCCA00649F80 /* MZApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZApi.h; sourceTree = "<group>"; };
 		E4D591861CB6CCCA00649F80 /* MZApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZApi.m; sourceTree = "<group>"; };
+		E4FE75421CC9E3B700B66D68 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWRevealViewController.h; path = "../../../Downloads/SWRevealViewController-master/SWRevealViewController/SWRevealViewController.h"; sourceTree = "<group>"; };
+		E4FE75431CC9E3B700B66D68 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWRevealViewController.m; path = "../../../Downloads/SWRevealViewController-master/SWRevealViewController/SWRevealViewController.m"; sourceTree = "<group>"; };
+		E4FE75471CC9EB9600B66D68 /* SideBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideBarViewController.h; sourceTree = "<group>"; };
+		E4FE75481CC9EB9600B66D68 /* SideBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideBarViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -300,12 +306,16 @@
 			isa = PBXGroup;
 			children = (
 				1F8F742C1CBEEE200056127D /* TinderSwipe */,
+				E4FE75421CC9E3B700B66D68 /* SWRevealViewController.h */,
+				E4FE75431CC9E3B700B66D68 /* SWRevealViewController.m */,
 				E4B5481B1CA9D398004EA764 /* LoginViewController.h */,
 				E4B5481C1CA9D398004EA764 /* LoginViewController.m */,
 				1FDCD7471CBEC7B700B99F19 /* SwipeViewController.h */,
 				1FDCD7481CBEC7B700B99F19 /* SwipeViewController.m */,
 				1F336E761CB4638900F957AC /* TestViewController.h */,
 				1F336E771CB4638900F957AC /* TestViewController.m */,
+				E4FE75471CC9EB9600B66D68 /* SideBarViewController.h */,
+				E4FE75481CC9EB9600B66D68 /* SideBarViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -512,6 +522,8 @@
 				1F8F74331CBEEE200056127D /* DraggableView.m in Sources */,
 				E4B5481A1CA9D398004EA764 /* AppDelegate.m in Sources */,
 				E42008681CC741510025F9F4 /* CustomPhotoCaptionView.m in Sources */,
+				E4FE75441CC9E3B700B66D68 /* SWRevealViewController.m in Sources */,
+				E4FE75491CC9EB9600B66D68 /* SideBarViewController.m in Sources */,
 				E42008651CC6B7C50025F9F4 /* AsyncImageView.m in Sources */,
 				E4B548171CA9D398004EA764 /* main.m in Sources */,
 				E4D591871CB6CCCA00649F80 /* MZApi.m in Sources */,

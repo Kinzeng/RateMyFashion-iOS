@@ -15,6 +15,7 @@
 
 @implementation SwipeViewController
 @synthesize MWPhotoList;
+@synthesize sidebarButton;
 - (IBAction)toPhotoGallery:(id)sender {
     //Launch photo browser.
     [self showPhotoBrowser];
@@ -39,6 +40,12 @@
     [self.view addSubview:bg];
     NSLog(@"%@", [[MZUser getCurrentUser] description]);
     
+    SWRevealViewController *revealViewController = self.revealViewController;
+    if(revealViewController){
+        [self.sidebarButton setTarget:self.revealViewController];
+        [self.sidebarButton setAction:@selector(revealToggle:)];
+        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    }
     // Do any additional setup after loading the view.
 }
 
@@ -88,7 +95,7 @@
 }
 -(MWCaptionView *) photoBrowser:(MWPhotoBrowser *)photoBrowser captionViewForPhotoAtIndex:(NSUInteger)index{
     MZPhoto *photo = [[[MZUser getCurrentUser] photoList]objectAtIndex:index];
-    MWCaptionView *captionView = [[MWCaptionView alloc] initWithPhoto:photo];
+    CustomPhotoCaptionView *captionView = [[CustomPhotoCaptionView alloc] initWithPhoto:photo];
     return captionView;
 }
 //Load the photobrowser once the menu button is pressed.

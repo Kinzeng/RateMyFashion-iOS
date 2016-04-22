@@ -98,9 +98,10 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
 //}
 
 - (void)segueToSwipe {
-    SwipeViewController *controller = [[UIStoryboard storyboardWithName:@"Main" bundle:NULL]instantiateViewControllerWithIdentifier:@"swipe"];
+    SWRevealViewController *controller = [SWRevealViewController alloc];
     navController = [[UINavigationController alloc]initWithRootViewController:controller];
-    [self presentViewController:navController animated:YES completion:nil];
+    
+    //[self presentViewController:animated:YES completion:nil];
 }
 
 - (void)fetchUserInfoWithCompletionHandler:(void (^)(void))segue {

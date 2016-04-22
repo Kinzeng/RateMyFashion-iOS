@@ -10,8 +10,11 @@
 #import "DraggableViewBackground.h"
 #import "MZUser.h"
 #import "MWPhotoBrowser.h"
+#import "SWRevealViewController.h"
 
 @interface SwipeViewController : UIViewController <MWPhotoBrowserDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 
 @property(strong, nonatomic) NSMutableArray * MWPhotoList;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *toPhotoGallery;
