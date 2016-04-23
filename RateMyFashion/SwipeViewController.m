@@ -10,10 +10,10 @@
 #import "DraggableViewBackground.h"
 #import "TestViewController.h"
 
-
-
 @implementation SwipeViewController
+
 @synthesize MWPhotoList;
+
 - (IBAction)toPhotoGallery:(id)sender {
     //Launch photo browser.
     [self showPhotoBrowser];

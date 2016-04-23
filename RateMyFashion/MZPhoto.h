@@ -17,7 +17,7 @@
 @property(assign, nonatomic)NSString *file_url;
 @property(assign, nonatomic)int likes;
 
--(id) initWithJSON: (NSDictionary *) returnedJSON;
+- (id)initWithJSON:(NSDictionary *)returnedJSON;
 
 
 @end
