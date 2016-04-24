@@ -12,7 +12,7 @@
 #import "MWPhotoBrowser.h"
 #import "SWRevealViewController.h"
 
-@interface SwipeViewController : UIViewController <MWPhotoBrowserDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface SwipeViewController : UIViewController < UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 
@@ -20,9 +20,6 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *toPhotoGallery;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *openCamera;
 
--(NSUInteger) numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser;
--(id <MWPhoto>) photoBrowser:(MWPhotoBrowser *)photoBrowser thumbPhotoAtIndex:(NSUInteger)index;
-- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index;
 
 
 @end

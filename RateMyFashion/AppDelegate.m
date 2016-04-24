@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "LoginViewController.h"
-#import "PhotoGalleryController.h"
 #import "SwipeViewController.h"
 
 @interface AppDelegate ()

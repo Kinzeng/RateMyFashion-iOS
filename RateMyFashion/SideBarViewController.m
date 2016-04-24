@@ -29,17 +29,57 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     return cell;
 }
--(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    UINavigationController *destViewController = (UINavigationController *) segue.destinationViewController;
-    destViewController.title = [[menuItems objectAtIndex:indexPath.row]capitalizedString];
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    //This is the index of the "photo gallery."
+    if(indexPath.row == 2){
+        NSLog(@"Photos Clicked");
+        [self showPhotoBrowser];
+    }
+}
+
+- (void)showPhotoBrowser{
+    [MZApi loadOwnPhotoWithUserID:[[MZUser getCurrentUser] getUserID ]andCompletionHandler:^(NSMutableArray *photos, NSError *error) {
+        if(error) {
+            NSLog(@" %@",[error description]);
+        }
+        else {
+            [[MZUser getCurrentUser] setPhotoList:photos];
+            MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
+            browser.enableGrid = YES; // Whether to allow the viewing of all the photo thumbnails on a grid (defaults to YES)
+            browser.startOnGrid = YES; // Whether to start on the grid of thumbnails instead of the first photo (defaults to NO
+            UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:browser];
+            nc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+            [self presentViewController:nc animated:YES completion:nil];
+        }
+    }];
+}
+
+
+//delegate methods from MWPhotoBrowser.
+- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index{
     
-    if([segue.identifier isEqualToString:@"showPhoto"]){
-        UINavigationController *navController = segue.destinationViewController;
+    if(index<[[[MZUser getCurrentUser] photoList] count]){
         
+        return [[[MZUser getCurrentUser] photoList]objectAtIndex:index];
+    }
+    return nil;
+}
+
+- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser thumbPhotoAtIndex:(NSUInteger)index{
+    if(index<[[[MZUser getCurrentUser] photoList] count]){
+        return [[[MZUser getCurrentUser] photoList]objectAtIndex:index];
     }
     
+    return nil;
 }
+-(NSUInteger) numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser{
+    return [[[MZUser getCurrentUser] photoList] count];
+    
+}
+
+
+
 
 
 @end

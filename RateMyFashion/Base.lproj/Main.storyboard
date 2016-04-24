@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="hTt-ZY-7js">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="fBP-kv-IFJ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -40,7 +40,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zBn-Tj-jXv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1120" y="-604"/>
+            <point key="canvasLocation" x="892" y="-558"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="0uo-Gd-elb">
@@ -58,21 +58,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gRF-Oo-yyZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1204" y="-536"/>
+            <point key="canvasLocation" x="-1188" y="-579"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="oVE-wG-oBc">
             <objects>
                 <viewController storyboardIdentifier="reveal_view" id="hTt-ZY-7js" customClass="SWRevealViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="QOZ-jz-Rik"/>
-                        <viewControllerLayoutGuide type="bottom" id="yik-G5-hdK"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Hu2-wu-1Oi">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
                     <connections>
                         <segue destination="AvE-QR-MgV" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="9Uq-P6-Urw"/>
                         <segue destination="Uvo-uM-72F" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="6Mr-MG-96P"/>
@@ -80,7 +71,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="htx-Ce-N32" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-346" y="-563"/>
+            <point key="canvasLocation" x="-580" y="-579"/>
         </scene>
         <!--Side Bar View Controller-->
         <scene sceneID="z7f-bt-E7M">
@@ -142,7 +133,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="recommendations" id="ifJ-u4-eN2">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="recommendations" id="ifJ-u4-eN2">
                                 <rect key="frame" x="0.0" y="160" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ifJ-u4-eN2" id="qJx-h5-Lgo">
@@ -152,7 +143,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Recommendations (Coming Soon!)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y2g-gj-mCi">
                                             <rect key="frame" x="20" y="11" width="284" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.65986992801047117" green="0.65986992801047117" blue="0.65986992801047117" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -167,7 +158,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JfB-be-KYD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-364" y="296"/>
+            <point key="canvasLocation" x="-580" y="156"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="FtP-nV-86o">
@@ -183,7 +174,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="psL-6f-rsH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="381" y="-596"/>
+            <point key="canvasLocation" x="185" y="-558"/>
         </scene>
     </scenes>
     <resources>

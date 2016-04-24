@@ -7,8 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface SideBarViewController : UITableViewController
+#import "MZApi.h"
+#import "MZUser.h"
+#import "MWPhotoBrowser.h"
+@interface SideBarViewController : UITableViewController < MWPhotoBrowserDelegate, UITableViewDelegate>
 @property(strong, nonatomic) NSArray * menuItems;
+
+- (void)showPhotoBrowser;
+- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index;
+- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser thumbPhotoAtIndex:(NSUInteger)index;
+-(NSUInteger) numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser;
+
+
 
 @end

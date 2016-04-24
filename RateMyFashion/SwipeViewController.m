@@ -16,10 +16,6 @@
 @implementation SwipeViewController
 @synthesize MWPhotoList;
 @synthesize sidebarButton;
-- (IBAction)toPhotoGallery:(id)sender {
-    //Launch photo browser.
-    [self showPhotoBrowser];
-}
 
 - (IBAction)openCamera:(id)sender {
     //Launch camera view controller.
@@ -55,10 +51,7 @@
 }
 
 
--(NSUInteger) numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser{
-    return [[[MZUser getCurrentUser] photoList] count];
-    
-}
+
 
 //Delegate methods for UIImagePickerDelegate
 
@@ -76,43 +69,6 @@
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
 
-//delegate methods from MWPhotoBrowser.
-- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index{
-    
-    if(index<[[[MZUser getCurrentUser] photoList] count]){
-        
-        return [[[MZUser getCurrentUser] photoList]objectAtIndex:index];
-    }
-    return nil;
-}
 
-- (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser thumbPhotoAtIndex:(NSUInteger)index{
-    if(index<[[[MZUser getCurrentUser] photoList] count]){
-        return [[[MZUser getCurrentUser] photoList]objectAtIndex:index];
-    }
-
-    return nil;
-}
--(MWCaptionView *) photoBrowser:(MWPhotoBrowser *)photoBrowser captionViewForPhotoAtIndex:(NSUInteger)index{
-    MZPhoto *photo = [[[MZUser getCurrentUser] photoList]objectAtIndex:index];
-    CustomPhotoCaptionView *captionView = [[CustomPhotoCaptionView alloc] initWithPhoto:photo];
-    return captionView;
-}
-//Load the photobrowser once the menu button is pressed.
-- (void)showPhotoBrowser{
-    [MZApi loadOwnPhotoWithUserID:[[MZUser getCurrentUser] getUserID ]andCompletionHandler:^(NSMutableArray *photos, NSError *error) {
-        if(error) {
-            NSLog(@" %@",[error description]);
-        }
-        else {
-            [[MZUser getCurrentUser] setPhotoList:photos];
-            MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithDelegate:self];
-            browser.enableGrid = YES; // Whether to allow the viewing of all the photo thumbnails on a grid (defaults to YES)
-            browser.startOnGrid = YES; // Whether to start on the grid of thumbnails instead of the first photo (defaults to NO
-            
-            [self.navigationController pushViewController:browser animated:YES];
-        }
-    }];
-}
 
 @end
