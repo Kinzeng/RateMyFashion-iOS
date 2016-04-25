@@ -15,8 +15,8 @@
 @synthesize dislikes;
 @synthesize user_id;
 
--(id)initWithJSON:(NSDictionary *) returnedJSON{
-    if(self = [self initWithURL:[NSURL URLWithString:[returnedJSON objectForKey:@"file_url"]]]){
+- (id)initWithJSON:(NSDictionary *)returnedJSON{
+    if(self = [self initWithURL:[NSURL URLWithString:[returnedJSON objectForKey:@"file_url"]]]) {
         self.photo_id = [[returnedJSON objectForKey:@"photo_id"] intValue];
         self.file_url = [returnedJSON objectForKey:@"file_url"];
         self.likes = [[returnedJSON objectForKey:@"likes"] intValue];

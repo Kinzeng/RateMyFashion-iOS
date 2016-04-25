@@ -42,13 +42,7 @@
 - (void)cardSwipedLeft:(UIView *)card;
 - (void)cardSwipedRight:(UIView *)card;
 
-
-
-@property (strong, nonatomic)NSMutableArray *photoArray;
-@property (retain, nonatomic)NSArray *exampleCardLabels; //%%% the labels the cards
 @property (retain, nonatomic)NSMutableArray *allCards; //%%% the labels the cards
 @property (strong, nonatomic)MZUser *user;
-
-
 
 @end

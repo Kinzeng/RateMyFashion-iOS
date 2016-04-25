@@ -24,6 +24,7 @@
 		1F9CD5FB1CC6B220000359A8 /* libMWPhotoBrowser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F9CD5F01CC6B220000359A8 /* libMWPhotoBrowser.a */; };
 		1F9CD5FC1CC6B220000359A8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F9CD5F11CC6B220000359A8 /* libPods.a */; };
 		1F9CD5FD1CC6B220000359A8 /* libSDWebImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F9CD5F21CC6B220000359A8 /* libSDWebImage.a */; };
+		1F9CD6011CC97B02000359A8 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9CD6001CC97B02000359A8 /* AsyncImageView.m */; };
 		1FDCD7491CBEC7B700B99F19 /* SwipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDCD7481CBEC7B700B99F19 /* SwipeViewController.m */; };
 		E40A7B491CB4D59000D54F93 /* MZPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = E40A7B481CB4D59000D54F93 /* MZPhoto.m */; };
 		E42008651CC6B7C50025F9F4 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E42008641CC6B7C50025F9F4 /* AsyncImageView.m */; };
@@ -82,6 +83,8 @@
 		1F9CD5F01CC6B220000359A8 /* libMWPhotoBrowser.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMWPhotoBrowser.a; path = "../../../Library/Developer/Xcode/DerivedData/RateMyFashion-gixryigrlbohyegbmsfwjocfomiu/Build/Products/Debug-iphonesimulator/libMWPhotoBrowser.a"; sourceTree = "<group>"; };
 		1F9CD5F11CC6B220000359A8 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "../../../Library/Developer/Xcode/DerivedData/RateMyFashion-gixryigrlbohyegbmsfwjocfomiu/Build/Products/Debug-iphonesimulator/libPods.a"; sourceTree = "<group>"; };
 		1F9CD5F21CC6B220000359A8 /* libSDWebImage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDWebImage.a; path = "../../../Library/Developer/Xcode/DerivedData/RateMyFashion-gixryigrlbohyegbmsfwjocfomiu/Build/Products/Debug-iphonesimulator/libSDWebImage.a"; sourceTree = "<group>"; };
+		1F9CD5FF1CC97B02000359A8 /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageView.h; sourceTree = "<group>"; };
+		1F9CD6001CC97B02000359A8 /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
 		1FDCD7471CBEC7B700B99F19 /* SwipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeViewController.h; sourceTree = "<group>"; };
 		1FDCD7481CBEC7B700B99F19 /* SwipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeViewController.m; sourceTree = "<group>"; };
 		B33E940CA5E99B3F953B3482 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -157,8 +160,8 @@
 		1F336E6F1CB45F1900F957AC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1F9CD5FE1CC97B02000359A8 /* AsyncImageView */,
 				1F9CD5E81CC6B220000359A8 /* libAFNetworking.a */,
-				E42008611CC6B7C50025F9F4 /* AsyncImageView */,
 				1F9CD5E91CC6B220000359A8 /* libBolts.a */,
 				1F9CD5EA1CC6B220000359A8 /* libDACircularProgress.a */,
 				1F9CD5EB1CC6B220000359A8 /* libFBSDKCoreKit.a */,
@@ -186,6 +189,16 @@
 			path = TinderSwipe;
 			sourceTree = "<group>";
 		};
+		1F9CD5FE1CC97B02000359A8 /* AsyncImageView */ = {
+			isa = PBXGroup;
+			children = (
+				1F9CD5FF1CC97B02000359A8 /* AsyncImageView.h */,
+				1F9CD6001CC97B02000359A8 /* AsyncImageView.m */,
+			);
+			name = AsyncImageView;
+			path = ../../AsyncImageView/AsyncImageView;
+			sourceTree = "<group>";
+		};
 		77E9AA9C7F36897C785EFEEA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,24 +206,6 @@
 				04C661822A84B4777F024E51 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		E42008611CC6B7C50025F9F4 /* AsyncImageView */ = {
-			isa = PBXGroup;
-			children = (
-				E42008621CC6B7C50025F9F4 /* AsyncImageView */,
-			);
-			name = AsyncImageView;
-			path = ../../Documents/AsyncImageView;
-			sourceTree = "<group>";
-		};
-		E42008621CC6B7C50025F9F4 /* AsyncImageView */ = {
-			isa = PBXGroup;
-			children = (
-				E42008631CC6B7C50025F9F4 /* AsyncImageView.h */,
-				E42008641CC6B7C50025F9F4 /* AsyncImageView.m */,
-			);
-			path = AsyncImageView;
 			sourceTree = "<group>";
 		};
 		E4B548091CA9D397004EA764 = {

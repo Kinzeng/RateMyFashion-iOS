@@ -11,9 +11,8 @@
 #import "TestViewController.h"
 #import "CustomPhotoCaptionView.h"
 
-
-
 @implementation SwipeViewController
+
 @synthesize MWPhotoList;
 @synthesize sidebarButton;
 

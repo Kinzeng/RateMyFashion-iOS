@@ -11,6 +11,7 @@
 @implementation DraggableViewBackground {
     NSInteger cardsLoadedIndex; //%%% the index of the card you have loaded into the loadedCards array last
     NSMutableArray *loadedCards; //%%% the array of card loaded (change max_buffer_size to increase or decrease the number of cards this holds)
+    NSMutableSet *set;
     
     UIButton *menuButton;
     UIButton *messageButton;
@@ -20,12 +21,11 @@
 //this makes it so only two cards are loaded at a time to
 //avoid performance and memory costs
 static const int MAX_BUFFER_SIZE = 2; //%%% max number of cards loaded at any given time, must be greater than 1
+static const int numToLoad = 5;
 static float CARD_HEIGHT;
 static float CARD_WIDTH;
 
-@synthesize exampleCardLabels; //%%% all the labels I'm using as example data at the moment
 @synthesize allCards;//%%% all the cards
-@synthesize photoArray;
 
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -35,20 +35,25 @@ static float CARD_WIDTH;
     if (self) {
         [super layoutSubviews];
         [self setupView];
-        exampleCardLabels = [[NSArray alloc]initWithObjects:@"first", @"second", @"third", @"fourth", @"last", nil]; //%%% placeholder for card-specific information
         
-        MZPhoto *photo = [[MZPhoto alloc] init];
-        photo.file_url = @"http://localhost:3000/static/photos/0.jpg";
-        photo.user_id = 0;
-        photo.photo_id = 0;
-        photoArray = [[NSMutableArray alloc] initWithObjects:photo, photo, photo, photo, photo, photo, photo, photo, photo, photo, photo, photo, nil];
+        //        MZPhoto *photo = [[MZPhoto alloc] init];
+        //        photo.file_url = @"http://localhost:3000/static/photos/1.jpg";
+        //        photo.user_id = 0;
+        //        photo.photo_id = 1;
+        
         loadedCards = [[NSMutableArray alloc] init];
+        set = [[NSMutableSet alloc] init];
         allCards = [[NSMutableArray alloc] init];
         cardsLoadedIndex = 0;
         
-//        [MZApi loadOwnPhotoWithUserID: andCompletionHandler:<#^(NSArray *user, NSError *error)callback#>];
-        //TODO: HTTP request to load X photos (10 or so)
-        [self loadCards]; //put this in a callback
+        [MZApi loadRandomPhotosWithID:[[MZUser getCurrentUser] getUserID]
+                       andNumOfPhotos:numToLoad
+                 andCompletionHandler:^(NSArray *results, NSError *error) {
+                     if (error)
+                         NSLog(@"%ld: %@", (long)error.code, error.domain);
+                     else
+                         [self initCardsFromArray:results];
+                 }];
     }
     return self;
 }
@@ -57,16 +62,16 @@ static float CARD_WIDTH;
 - (void)setupView {
     self.backgroundColor = [UIColor colorWithRed:.92 green:.93 blue:.95 alpha:1]; //the gray background colors
     
-//    int menuWidth = 22;
-//    int menuHeight = 15;
-//    menuButton = [[UIButton alloc]initWithFrame:CGRectMake(17, 34, menuWidth, menuHeight)];
-//    [menuButton setImage:[UIImage imageNamed:@"menuButton"] forState:UIControlStateNormal];
-//    [menuButton addTarget:self action:@selector(menuPressed) forControlEvents:UIControlEventTouchUpInside];
-//    
-//    int messageWidth = 18;
-//    int messageHeight = 18;
-//    messageButton = [[UIButton alloc]initWithFrame:CGRectMake(self.frame.size.width - (17 + messageWidth), 34, messageWidth, messageHeight)];
-//    [messageButton setImage:[UIImage imageNamed:@"messageButton"] forState:UIControlStateNormal];
+    //    int menuWidth = 22;
+    //    int menuHeight = 15;
+    //    menuButton = [[UIButton alloc]initWithFrame:CGRectMake(17, 34, menuWidth, menuHeight)];
+    //    [menuButton setImage:[UIImage imageNamed:@"menuButton"] forState:UIControlStateNormal];
+    //    [menuButton addTarget:self action:@selector(menuPressed) forControlEvents:UIControlEventTouchUpInside];
+    //
+    //    int messageWidth = 18;
+    //    int messageHeight = 18;
+    //    messageButton = [[UIButton alloc]initWithFrame:CGRectMake(self.frame.size.width - (17 + messageWidth), 34, messageWidth, messageHeight)];
+    //    [messageButton setImage:[UIImage imageNamed:@"messageButton"] forState:UIControlStateNormal];
     
     xButton = [[UIButton alloc]initWithFrame:CGRectMake((self.frame.size.width / 2) - 100, self.frame.size.height - 125, 60, 60)];
     [xButton setImage:[UIImage imageNamed:@"xButton"] forState:UIControlStateNormal];
@@ -83,45 +88,36 @@ static float CARD_WIDTH;
 }
 
 //%%% creates a card and returns it
-- (DraggableView *)createDraggableViewWithDataAtIndex:(NSInteger)index {
-    DraggableView *draggableView = [[DraggableView alloc]initWithFrame:CGRectMake((self.frame.size.width - CARD_WIDTH) / 2, (self.frame.size.height - CARD_HEIGHT)/2, CARD_WIDTH, CARD_HEIGHT)
-                                                              andPhoto:[photoArray objectAtIndex:index]];
-    draggableView.index = index;
+- (DraggableView *)createDraggableViewWithPhoto:(MZPhoto *)photo {
+    DraggableView *draggableView = [[DraggableView alloc]initWithFrame:CGRectMake((self.frame.size.width - CARD_WIDTH) / 2, (self.frame.size.height - CARD_HEIGHT)/2, CARD_WIDTH, CARD_HEIGHT) andPhoto:photo];
     draggableView.delegate = self;
     
     return draggableView;
 }
 
 //%%% loads all the cards and puts the first x in the "loaded cards" array
-- (void)loadCards {
+- (void)initCardsFromArray:(NSArray *)photos {
+    NSInteger numLoadedCardsCap = (([photos count] > MAX_BUFFER_SIZE) ? MAX_BUFFER_SIZE : [photos count]); //%%% if the buffer size is greater than the data size, there will be an array error, so this makes sure that doesn't happen
     
-    NSInteger numLoadedCardsCap = (([photoArray count] > MAX_BUFFER_SIZE) ? MAX_BUFFER_SIZE : [photoArray count]);
-    //%%% if the buffer size is greater than the data size, there will be an array error, so this makes sure that doesn't happen
-    
-    //%%% loops through the exampleCardsLabels array to create a card for each label.  This should be customized by removing "exampleCardLabels" with your own array of data
-//    for (int i = 0; i < [exampleCardLabels count]; i++) {
-//        DraggableView *newCard = [self createDraggableViewWithDataAtIndex:i];
-//        [allCards addObject:newCard];
-//        
-//        if (i < numLoadedCardsCap) {
-//            //%%% adds a small number of cards to be loaded
-//            [loadedCards addObject:newCard];
-//        }
-//    }
-    
-    for (NSInteger i = 0; i < [photoArray count]; i++) {
-        DraggableView *c = [self createDraggableViewWithDataAtIndex:i];
+    NSLog(@"%d", (int)numLoadedCardsCap);
+    for (NSInteger i = 0; i < [photos count]; i++) {
+        NSLog(@"%d", (int)i);
+        [set addObject:[NSNumber numberWithInteger:[[photos objectAtIndex:i] photo_id]]];
+        DraggableView *c = [self createDraggableViewWithPhoto:[photos objectAtIndex:i]];
         [allCards addObject:c];
         if (i < numLoadedCardsCap)
             [loadedCards addObject:c];
     }
+    
+    NSLog(@"init");
     
     //%%% displays the small number of loaded cards dictated by MAX_BUFFER_SIZE so that not all the cards
     // are showing at once and clogging a ton of data
     for (int i = 0; i < [loadedCards count]; i++) {
         if (i > 0) {
             [self insertSubview:[loadedCards objectAtIndex:i] belowSubview:[loadedCards objectAtIndex:i-1]];
-        } else {
+        }
+        else {
             [self addSubview:[loadedCards objectAtIndex:i]];
         }
         cardsLoadedIndex++; //%%% we loaded a card into loaded cards, so we have to increment
@@ -131,35 +127,63 @@ static float CARD_WIDTH;
 //%%% action called when the card goes to the left.
 - (void)cardSwipedLeft:(UIView *)card {
     DraggableView *c = (DraggableView *)card;
-    [MZApi dislikePhotoWithPhotoID:c.photo.photo_id andCompletionHandler:^(MZPhoto *photo, NSError *error) {
-        if (error)
-            NSLog(@"%ld: %@", (long)error.code, error.domain);
-        else
-            NSLog(@"Disliked photo %d", c.photo.photo_id);
-    }];
-    
-    [loadedCards removeObjectAtIndex:0]; //%%% card was swiped, so it's no longer a "loaded card"
-    [allCards setObject:[NSNull null] atIndexedSubscript:c.index];
-    
-    if (cardsLoadedIndex < [allCards count]) { //%%% if we haven't reached the end of all cards, put another into the loaded cards
-        [loadedCards addObject:[allCards objectAtIndex:cardsLoadedIndex]];
-        cardsLoadedIndex++;//%%% loaded a card, so have to increment count
-        [self insertSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE - 1)] belowSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE - 2)]];
-    }
+    [MZApi dislikePhotoWithPhotoID:c.photo.photo_id
+                         andUserID:[[MZUser getCurrentUser] getUserID]
+              andCompletionHandler:^(MZPhoto *photo, NSError *error) {
+                  if (error)
+                      NSLog(@"%ld: %@", (long)error.code, error.domain);
+                  else
+                      NSLog(@"Disliked photo %d", c.photo.photo_id);
+                  
+                  if ([allCards count] - cardsLoadedIndex == 0)
+                      [self findCards];
+                  else
+                      [self loadCard];
+              }];
 }
 
 //%%% action called when the card goes to the right.
 - (void)cardSwipedRight:(UIView *)card {
     DraggableView *c = (DraggableView *)card;
-    [MZApi likePhotoWithPhotoID:c.photo.photo_id andCompletionHandler:^(MZPhoto *photo, NSError *error) {
-        if (error)
-            NSLog(@"%ld: %@", (long)error.code, error.domain);
-        else
-            NSLog(@"Liked photo %d", c.photo.photo_id);
-    }];
+    [MZApi likePhotoWithPhotoID:c.photo.photo_id
+                      andUserID:[[MZUser getCurrentUser] getUserID]
+           andCompletionHandler:^(MZPhoto *photo, NSError *error) {
+               if (error)
+                   NSLog(@"%ld: %@", (long)error.code, error.domain);
+               else
+                   NSLog(@"Liked photo %d", c.photo.photo_id);
+               
+               if ([allCards count] - cardsLoadedIndex == 0)
+                   [self findCards];
+               else
+                   [self loadCard];
+           }];
     
-    [loadedCards removeObjectAtIndex:0]; //%%% card was swiped, so it's no longer a "loaded card"
-    [allCards setObject:[NSNull null] atIndexedSubscript:c.index];
+}
+
+- (void)findCards {
+    [MZApi loadRandomPhotosWithID:[[MZUser getCurrentUser] getUserID]
+                   andNumOfPhotos:numToLoad
+             andCompletionHandler:^(NSArray *results, NSError *error) {
+                 if (error)
+                     NSLog(@"%ld: %@", (long)error.code, error.domain);
+                 else {
+                     for (NSInteger i = 0; i < [results count]; i++) {
+                         if (![set containsObject:[NSNumber numberWithInteger:[[results objectAtIndex:i] photo_id]]]) {
+                             [set addObject:[NSNumber numberWithInteger:[[results objectAtIndex:i] photo_id]]];
+                             DraggableView *c = [self createDraggableViewWithPhoto:[results objectAtIndex:i]];
+                             [allCards addObject:c];
+                         }
+                     }
+                 }
+                 
+                 [self loadCard];
+             }];
+}
+
+- (void)loadCard {
+    if ([loadedCards count] > 0)
+        [loadedCards removeObjectAtIndex:0]; //%%% card was swiped, so it's no longer a "loaded card"
     
     if (cardsLoadedIndex < [allCards count]) { //%%% if we haven't reached the end of all cards, put another into the loaded cards
         [loadedCards addObject:[allCards objectAtIndex:cardsLoadedIndex]];

@@ -39,5 +39,6 @@ Thumbs.db
 # XCode Files #
 ###############
 *.xcuserstate
-project.xcworkspace/
+*.xcworkspace/
 xcuserdata/
+Pods/

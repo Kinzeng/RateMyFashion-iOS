@@ -36,9 +36,10 @@
     if (self) {
         [self setupView];
         
+        NSLog(@"view");
         photo = photoModel;
         photoView = [[AsyncImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-        [photoView setImageURL:[NSURL URLWithString:[photoModel file_url]]];
+        [photoView setImageURL:[NSURL URLWithString:photoModel.file_url]];
         [self addSubview:photoView];
         
         panGestureRecognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(beingDragged:)];
@@ -57,15 +58,6 @@
     self.layer.shadowOpacity = 0.2;
     self.layer.shadowOffset = CGSizeMake(1, 1);
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 //%%% called when you move your finger across the screen.
 // called many times a second
@@ -157,7 +149,7 @@
     
     [delegate cardSwipedRight:self];
     
-    NSLog(@"YES");
+//    NSLog(@"YES");
 }
 
 //%%% called when a swip exceeds the ACTION_MARGIN to the left
@@ -172,7 +164,7 @@
     
     [delegate cardSwipedLeft:self];
     
-    NSLog(@"NO");
+//    NSLog(@"NO");
 }
 
 - (void)rightClickAction {
@@ -188,7 +180,7 @@
     
     [delegate cardSwipedRight:self];
     
-    NSLog(@"YES");
+//    NSLog(@"YES");
 }
 
 - (void)leftClickAction {
@@ -204,7 +196,7 @@
     
     [delegate cardSwipedLeft:self];
     
-    NSLog(@"NO");
+//    NSLog(@"NO");
 }
 
 @end

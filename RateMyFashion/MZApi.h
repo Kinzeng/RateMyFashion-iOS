@@ -19,9 +19,11 @@
     andCompletionHandler:(void (^)(NSArray *results, NSError *error))callback;
 
 + (void)likePhotoWithPhotoID:(int)photoID
+                   andUserID:(NSString *)userID
         andCompletionHandler:(void(^)(MZPhoto *photo, NSError *error))callback;
 
 + (void)dislikePhotoWithPhotoID:(int)photoID
+                      andUserID:(NSString *)userID
            andCompletionHandler:(void(^)(MZPhoto *photo, NSError *error))callback;
 
 + (void)loadOwnPhotoWithUserID:(NSString * )userID

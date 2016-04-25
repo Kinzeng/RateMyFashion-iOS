@@ -52,7 +52,6 @@
 @property (strong, nonatomic)OverlayView* overlayView;
 @property (strong, nonatomic)AsyncImageView *photoView;
 @property (strong, nonatomic)MZPhoto *photo;
-@property (assign, nonatomic)NSInteger index;
 
 - (id)initWithFrame:(CGRect)frame
              andPhoto:(MZPhoto *)photo;
