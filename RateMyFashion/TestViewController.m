@@ -17,12 +17,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"https://i.ytimg.com/vi/tntOCGkgt98/maxresdefault.jpg"]]];
-//
-//    [MZApi uploadPhotoWithID:@"kai1234" andPhotoImage:image andCompletionHandler:^(MZPhoto *photo, NSError *error) {
-//        //Insert code here.
-//        NSLog(@"Photo Upload Successful!");
-//    }];
+    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:@"https://i.ytimg.com/vi/tntOCGkgt98/maxresdefault.jpg"]]];
+
+    [MZApi uploadPhotoWithID:@"kai1234" andPhotoImage:image andCompletionHandler:^(MZPhoto *photo, NSError *error) {
+        //Insert code here.
+        NSLog(@"Photo Upload Successful!");
+    }];
     
     // Do any additional setup after loading the view.
     [MZApi loadOwnPhotoWithUserID:@"kai1234" andCompletionHandler:^(NSMutableArray *photos, NSError *error) {

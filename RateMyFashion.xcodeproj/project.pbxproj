@@ -306,8 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				1F8F742C1CBEEE200056127D /* TinderSwipe */,
-				E4FE75421CC9E3B700B66D68 /* SWRevealViewController.h */,
-				E4FE75431CC9E3B700B66D68 /* SWRevealViewController.m */,
+				E4FE75511CCDAB1500B66D68 /* SWRevealController */,
 				E4B5481B1CA9D398004EA764 /* LoginViewController.h */,
 				E4B5481C1CA9D398004EA764 /* LoginViewController.m */,
 				1FDCD7471CBEC7B700B99F19 /* SwipeViewController.h */,
@@ -327,6 +326,15 @@
 				E4D591861CB6CCCA00649F80 /* MZApi.m */,
 			);
 			name = API;
+			sourceTree = "<group>";
+		};
+		E4FE75511CCDAB1500B66D68 /* SWRevealController */ = {
+			isa = PBXGroup;
+			children = (
+				E4FE75421CC9E3B700B66D68 /* SWRevealViewController.h */,
+				E4FE75431CC9E3B700B66D68 /* SWRevealViewController.m */,
+			);
+			name = SWRevealController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -62,6 +62,12 @@
     [picker dismissViewControllerAnimated:YES completion:NULL];
     [MZApi uploadPhotoWithID:[[MZUser getCurrentUser] getUserID] andPhotoImage:chosenImage andCompletionHandler:^(MZPhoto *photo, NSError *error) {
         NSLog(@"Photo Uploaded!");
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Photo Upload" message:@"Photo Upload Complete!" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okButton = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil];
+        [alert addAction:okButton];
+        [self presentViewController:alert animated:YES completion:nil];
+
+        
     }];
 }
 

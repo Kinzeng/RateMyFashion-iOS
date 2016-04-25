@@ -170,7 +170,13 @@
     [manager POST:upload_photo_url parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
     [formData appendPartWithFileData:imageData name:@"photo" fileName:@"photo.jpg" mimeType:@"image/jpeg"];
     }
-         progress:nil
+         progress:^(NSProgress * _Nonnull uploadProgress) {
+             // This is not called back on the main queue.
+             // You are responsible for dispatching to the main queue for UI updates
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 //Update the progress view
+             });
+         }
           success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
               NSLog(@"%@", responseObject);
               
