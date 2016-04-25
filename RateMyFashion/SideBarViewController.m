@@ -15,7 +15,7 @@
 -(void) viewDidLoad{
     [super viewDidLoad];
     //add recommendations later when UI is finished over there.
-    menuItems = @[@"title", @"home", @"photogallery", @"recommendations"];
+    menuItems = @[@"title", @"home", @"photogallery", @"recommendations", @"settings"];
 }
 -(NSInteger) numberOfSectionsInTableView:(UITableView *) tableView{
     return 1;
@@ -60,7 +60,8 @@
 - (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index{
     
     if(index<[[[MZUser getCurrentUser] photoList] count]){
-        
+        MZPhoto * photo = [[[MZUser getCurrentUser] photoList]objectAtIndex:index];
+        photo.caption = [NSString stringWithFormat:@"Likes: %d   Dislikes: %d", photo.likes, photo.dislikes];
         return [[[MZUser getCurrentUser] photoList]objectAtIndex:index];
     }
     return nil;
