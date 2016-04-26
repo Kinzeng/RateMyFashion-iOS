@@ -6,7 +6,6 @@
 //  Copyright © 2016 MouZhang. All rights reserved.
 //
 
-#import "TestViewController.h"
 #import "SwipeViewController.h"
 #import "LoginViewController.h"
 #import "MZUser.h"
@@ -127,6 +126,23 @@ didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result
                  NSLog(@"There was an error %@", error);
              }
          }];
+    }
+}
+- (void)revealController:(SWRevealViewController *)revealController willMoveToPosition:    (FrontViewPosition)position
+{
+    if(position == FrontViewPositionLeft) {
+        self.view.userInteractionEnabled = YES;
+    } else {
+        self.view.userInteractionEnabled = NO;
+    }
+}
+
+- (void)revealController:(SWRevealViewController *)revealController didMoveToPosition:    (FrontViewPosition)position
+{
+    if(position == FrontViewPositionLeft) {
+        self.view.userInteractionEnabled = YES;
+    } else {
+        self.view.userInteractionEnabled = NO;
     }
 }
 

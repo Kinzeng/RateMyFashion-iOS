@@ -12,7 +12,8 @@
 #import "MWPhotoBrowser.h"
 #import "SWRevealViewController.h"
 
-@interface SwipeViewController : UIViewController < UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface SwipeViewController : UIViewController < UIImagePickerControllerDelegate, UINavigationControllerDelegate, SWRevealViewControllerDelegate>
+
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 

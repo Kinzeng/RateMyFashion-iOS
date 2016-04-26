@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SWRevealViewController.h"
 
-@interface SettingsViewController : UITableViewController <UITableViewDelegate>
+@interface SettingsViewController : UITableViewController <UITableViewDelegate, SWRevealViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *menubarButton;
 
 @end

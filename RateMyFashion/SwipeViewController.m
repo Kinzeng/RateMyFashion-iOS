@@ -8,7 +8,6 @@
 
 #import "SwipeViewController.h"
 #import "DraggableViewBackground.h"
-#import "TestViewController.h"
 #import "CustomPhotoCaptionView.h"
 
 @implementation SwipeViewController
@@ -34,6 +33,9 @@
     NSLog(@"%@", [[MZUser getCurrentUser] description]);
     
     SWRevealViewController *revealViewController = self.revealViewController;
+    UITapGestureRecognizer *tap = [revealViewController tapGestureRecognizer];
+    tap.delegate = self;
+    [self.view addGestureRecognizer:tap];
     if(revealViewController){
         [self.sidebarButton setTarget:self.revealViewController];
         [self.sidebarButton setAction:@selector(revealToggle:)];

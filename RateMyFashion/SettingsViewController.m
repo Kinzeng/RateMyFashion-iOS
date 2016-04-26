@@ -14,6 +14,9 @@
 -(void) viewDidLoad {
     [super viewDidLoad];
     SWRevealViewController *revealViewController = self.revealViewController;
+    UITapGestureRecognizer *tap = [revealViewController tapGestureRecognizer];
+    tap.delegate = self;
+    [self.view addGestureRecognizer:tap];
     if(revealViewController) {
         [self.menubarButton setTarget:self.revealViewController];
         [self.menubarButton setAction:@selector(revealToggle:)];
@@ -48,5 +51,23 @@
     }
     
 }
+- (void)revealController:(SWRevealViewController *)revealController willMoveToPosition:    (FrontViewPosition)position
+{
+    if(position == FrontViewPositionLeft) {
+        self.view.userInteractionEnabled = YES;
+    } else {
+        self.view.userInteractionEnabled = NO;
+    }
+}
+
+- (void)revealController:(SWRevealViewController *)revealController didMoveToPosition:    (FrontViewPosition)position
+{
+    if(position == FrontViewPositionLeft) {
+        self.view.userInteractionEnabled = YES;
+    } else {
+        self.view.userInteractionEnabled = NO;
+    }
+}
+
 
 @end

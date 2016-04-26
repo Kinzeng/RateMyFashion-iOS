@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1F336E781CB4638900F957AC /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F336E771CB4638900F957AC /* TestViewController.m */; };
 		1F8171941CBDC2A1008A1563 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 1F8171931CBDC2A1008A1563 /* Podfile */; };
 		1F8F742B1CBED2000056127D /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8F742A1CBED2000056127D /* Constants.m */; };
 		1F8F74331CBEEE200056127D /* DraggableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8F742E1CBEEE200056127D /* DraggableView.m */; };
@@ -60,8 +59,6 @@
 
 /* Begin PBXFileReference section */
 		04C661822A84B4777F024E51 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		1F336E761CB4638900F957AC /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
-		1F336E771CB4638900F957AC /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		1F8171931CBDC2A1008A1563 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; };
 		1F8F742A1CBED2000056127D /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		1F8F742D1CBEEE200056127D /* DraggableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableView.h; sourceTree = "<group>"; };
@@ -288,8 +285,6 @@
 				E4B5481C1CA9D398004EA764 /* LoginViewController.m */,
 				1FDCD7471CBEC7B700B99F19 /* SwipeViewController.h */,
 				1FDCD7481CBEC7B700B99F19 /* SwipeViewController.m */,
-				1F336E761CB4638900F957AC /* TestViewController.h */,
-				1F336E771CB4638900F957AC /* TestViewController.m */,
 				E4FE75471CC9EB9600B66D68 /* SideBarViewController.h */,
 				E4FE75481CC9EB9600B66D68 /* SideBarViewController.m */,
 				E4FE75591CCDBC1400B66D68 /* SettingsViewController.h */,
@@ -504,7 +499,6 @@
 				E4FE75491CC9EB9600B66D68 /* SideBarViewController.m in Sources */,
 				E4B548171CA9D398004EA764 /* main.m in Sources */,
 				E4D591871CB6CCCA00649F80 /* MZApi.m in Sources */,
-				1F336E781CB4638900F957AC /* TestViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
