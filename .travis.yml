@@ -1,4 +1,3 @@
 language: objective-c
-script:
-  - xctool -workspace RateMyfashion.xcworkspace -scheme RateMyFashion -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
-
+xcode_workspace: RateMyFashion.xcworkspace
+xcode_scheme: RateMyFashion
