@@ -15,7 +15,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //add recommendations later when UI is finished over there.
-    menuItems = @[@"title", @"home", @"photogallery", @"recommendations", @"settings"];
+    menuItems = @[@"title", @"home", @"photogallery", @"recommendations", @"settings", @"logout"];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
