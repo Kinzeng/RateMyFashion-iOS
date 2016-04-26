@@ -1,9 +1,8 @@
-source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '8.0'
-
 pod 'AFNetworking', '~> 3.0'
-pod 'JSONModel'
+pod 'JSONModel', '~> 1.2'
 pod 'FBSDKCoreKit'
 pod 'FBSDKShareKit'
 pod 'FBSDKLoginKit'
-pod 'MWPhotoBrowser'
+pod 'MWPhotoBrowser', '~> 2.1'
+pod 'SWRevealViewController', '~> 2.3'
+pod 'AsyncImageView', '~> 1.5'

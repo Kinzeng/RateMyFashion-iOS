@@ -35,7 +35,8 @@
 + (void)checkUserWithID:(NSString *)userID
      andCompletionHandler:(void(^)(NSString *userID, NSError *error))callback;
 
-+ (void)uploadPhotoWithID:(NSString* ) ownerID andPhotoImage: (UIImage* ) image
-    andCompletionHandler:(void(^)(MZPhoto *photo, NSError *error))callback;
++ (void)uploadPhotoWithID:(NSString* )ownerID
+            andPhotoImage:(UIImage* )image
+     andCompletionHandler:(void(^)(MZPhoto *photo, NSError *error))callback;
 
 @end

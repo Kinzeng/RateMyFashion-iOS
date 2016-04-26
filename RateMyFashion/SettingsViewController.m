@@ -11,36 +11,36 @@
 @implementation SettingsViewController
 @synthesize menubarButton;
 
--(void) viewDidLoad{
+-(void) viewDidLoad {
     [super viewDidLoad];
     SWRevealViewController *revealViewController = self.revealViewController;
-    if(revealViewController){
+    if(revealViewController) {
         [self.menubarButton setTarget:self.revealViewController];
         [self.menubarButton setAction:@selector(revealToggle:)];
         [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     }
-
-    
 }
 
--(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     //deselect the row after selecting it for the "deselect" animation.
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
-    switch(indexPath.row){
+    
+    switch(indexPath.row) {
         case 0: {
             UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Desired Display Name"
-                                                                    message:nil
+                                                                           message:nil
                                                                     preferredStyle:UIAlertControllerStyleAlert];
             [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
                 textField.placeholder = @"Display Name";
             }];
             
-            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action){
-                //Handle the name change here. Most likely with an Update user API call.
-                //UITextField *desiredName = alert.textFields.firstObject;
-                
-                }];
+            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK"
+                                                                    style:UIAlertActionStyleDefault
+                                                                  handler:^(UIAlertAction * action) {
+                                                                      //Handle the name change here. Most likely with an Update user API call.
+                                                                      //UITextField *desiredName = alert.textFields.firstObject;
+                                                                      
+                                                                  }];
             
             [alert addAction:defaultAction];
             [self presentViewController:alert animated:YES completion:nil];

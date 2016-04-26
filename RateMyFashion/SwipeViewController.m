@@ -25,9 +25,7 @@
     picker.sourceType = UIImagePickerControllerSourceTypeCamera;
     
     [self presentViewController:picker animated:YES completion:NULL];
-    
 }
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -49,12 +47,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-
-
 //Delegate methods for UIImagePickerDelegate
-
--(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
     //Upload the image, once the user has taken it. Do NOT save in phone photo gallery.
     
@@ -65,8 +59,6 @@
         UIAlertAction *okButton = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil];
         [alert addAction:okButton];
         [self presentViewController:alert animated:YES completion:nil];
-
-        
     }];
 }
 

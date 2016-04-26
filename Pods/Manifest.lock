@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - AsyncImageView (1.5.1)
   - Bolts (1.7.0):
     - Bolts/AppLinks (= 1.7.0)
     - Bolts/Tasks (= 1.7.0)
@@ -29,24 +30,28 @@ PODS:
     - FBSDKCoreKit
   - JSONModel (1.2.0)
   - MBProgressHUD (0.9.2)
-  - MWPhotoBrowser (2.1.1):
+  - MWPhotoBrowser (2.1.2):
     - DACircularProgress (~> 2.3)
     - MBProgressHUD (~> 0.9)
     - SDWebImage (!= 3.7.2, ~> 3.7)
   - SDWebImage (3.7.5):
     - SDWebImage/Core (= 3.7.5)
   - SDWebImage/Core (3.7.5)
+  - SWRevealViewController (2.3.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
+  - AsyncImageView (~> 1.5)
   - FBSDKCoreKit
   - FBSDKLoginKit
   - FBSDKShareKit
-  - JSONModel
-  - MWPhotoBrowser
+  - JSONModel (~> 1.2)
+  - MWPhotoBrowser (~> 2.1)
+  - SWRevealViewController (~> 2.3)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  AsyncImageView: db9433939160710b34a5c249479e03af2a2121b0
   Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   FBSDKCoreKit: 686ac982723a14ec9ddb85e2f81235d7706c891b
@@ -54,7 +59,8 @@ SPEC CHECKSUMS:
   FBSDKShareKit: 2d1746144cfc8a9dbbd24997c34ee0471be51b6a
   JSONModel: 12523685c4b623553ccf844bbbf7007624317b2c
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
-  MWPhotoBrowser: ba0d0c09ffda3a7ea10093518738c502c1c7141c
+  MWPhotoBrowser: 5836d7aa041dc05a13de380c246826578adc5ea5
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
+  SWRevealViewController: 6d3fd97f70112fd7cef9de14df4260eacce4c63a
 
 COCOAPODS: 0.39.0

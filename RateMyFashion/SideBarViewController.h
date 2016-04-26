@@ -16,7 +16,7 @@
 - (void)showPhotoBrowser;
 - (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index;
 - (id <MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser thumbPhotoAtIndex:(NSUInteger)index;
--(NSUInteger) numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser;
+- (NSUInteger *)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser;
 
 
 
