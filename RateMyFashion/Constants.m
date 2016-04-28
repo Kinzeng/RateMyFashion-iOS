@@ -7,7 +7,7 @@
 //
 
 #import "Constants.h"
-#define BASE_URL @"http://localhost:3000/api/"
+#define BASE_URL @"http://162.243.49.58:3000/api/"
 
 @implementation Constants
 NSString * const load_photos_url = BASE_URL @"load_photos";
