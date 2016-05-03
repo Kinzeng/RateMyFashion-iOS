@@ -30,7 +30,7 @@ static float CARD_WIDTH;
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     CARD_HEIGHT = self.frame.size.height * 0.6; //%%% height of the draggable card
-    CARD_WIDTH = self.frame.size.width * 0.8; //%%% width of the draggable card
+    CARD_WIDTH = self.frame.size.width * 0.9; //%%% width of the draggable card
     
     if (self) {
         [super layoutSubviews];
